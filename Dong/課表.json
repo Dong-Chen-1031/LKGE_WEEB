@@ -8,5 +8,10 @@
     "name":"人文(網頁設計)(主)",
     "timetr":1,
     "timetd":1
+  },
+  {
+    "name":"情意發展",
+    "timetr":0,
+    "timetd":3
   }
 ]
