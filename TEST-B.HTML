@@ -13,10 +13,10 @@
             projectId: 'test-school-d70c2'
         });
         var db = firebase.firestore();
-        var ref = db.collection('lkge').doc('dong');
+        var ref = db.collection('lkge').doc('st');
         ref.set({  
             total: 500,
-            d: 'hhh',
+            d: 'test',
             sale: 330
         }).then(() => {
             console.log('set data successful');
