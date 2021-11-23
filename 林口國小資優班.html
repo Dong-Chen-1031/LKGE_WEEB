@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- https://www.oxxostudio.tw/articles/201905/firebase-firestore.html -->
+<html>
+<head>
+    <title>林口國小資優班</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+    <script type='text/javascript'>
+        function butout(w){  //移出區塊
+            butimg=document.getElementById("butt"+w)
+            butimg.style.display='none';
+            butimg=document.getElementById("butimg"+w)
+            butimg.style.display='block';
+        };
+        function butover(w){  //移入區塊
+            butimg=document.getElementById("butimg"+w)
+            butimg.style.display='none';
+            butimg=document.getElementById("butt"+w)
+            butimg.style.display='block';
+        };
+    </script>
+    <style>
+        table{border-collapse: collapse;}
+        .booktd{height: 20px;width: 16%;border: 2px solid #092846;}
+        .bookt{font-size: 20px;color: #f5f5f5;}
+        .booktable{margin-left: auto;margin-right: auto;width: 95%;}
+        .bookdiv{margin-left: auto;margin-right: auto;width: 100%;}
+        tr:nth-child(2){height: 300px;}
+        tr:nth-child(1){text-align: center;font-size: 18px;}
+        .huse{width: 10%; height: auto;font-size: 10px;background-color: #cf7c1d;margin: 5px;
+            font-size: 20px;color: #f5f5f5}
+        .hdiv{width: 90%;margin-left: auto;margin-right: auto;}
+        .bodydiv{background-color: #f5f5f5;width: 90%;height: 70%;margin-left: auto;margin-top: 10px
+            ;margin-right: auto;}
+        .login{margin-left: auto;width: 15%;background-color: #cf7c1d;}
+        .center{text-align: center;margin-left: auto;margin-right: auto;margin-top: auto;margin-bottom: auto;}
+        .loginimg{width: 20px;height: 20px;margin-top: auto;margin-bottom: auto;}
+        .xhr{height: 30%;margin-top: auto;margin-bottom: auto;background-color: #f5f5f5;border: 0px;}
+        .logintext{color: #f5f5f5;font-size: 20px;}
+        body{height: 100%;background-color: #092846;}
+        html{height: 100%;}
+        .flex {margin-left: auto;margin-right: auto;
+            display: flex;flex-direction: row;justify-content:flex-start;}
+        .flexitem {display: flex;}
+        .himg{height: 70px;width: 10%;}
+        .booktd>textarea{font-family:sans-serif;width:90%;height: 90%;background-color: #f5f5f5;
+            text-align: center;font-size: 18px;margin-left: auto;margin-right: auto;border: 0px;}
+        .bookst{width: 3%;border: 2px solid #092846;text-align: center;}
+        .bookst>img{height: 30px;}
+        .bookmemus{width: 90%;height: 5%;justify-content:center;padding-top: 10px;padding-bottom: 10px;}
+        .booktdiv{border-radius: 10px;background-color: #388ce1;width:8%;}
+        .bookmemu{margin-left: 10px;margin-right: 10px;}
+    </style>
+    <script>
+        // firebase.initializeApp({
+        //     projectId: 'lkge-web'
+        // });
+        // var 資料庫 = firebase.firestore();
+        // // 連線firebase
+
+        // function 寫入_聯絡簿(輸入框){
+        //     let fire路徑 = 資料庫.collection('1').doc(輸入框.id);
+        //     let t輸入資料 = '';
+        //     let t輸入內容_已切 = 輸入框.value.split('\n');
+
+        //     for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
+        //         let for資料 = t輸入內容_已切[次];
+        //         t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
+        //     }
+            
+        //     console.log(t輸入資料)
+        //     fire路徑.set({
+        //         total: t輸入資料
+        //     }).then(() => {
+        //         console.log('set data successful');
+        //     });
+        // };
+        // 寫入聯絡簿
+        const firebaseConfig = {
+            apiKey: "AIzaSyBmv5-WRZerKSW4irXeZHTv1XRgKhJGX3A",
+            authDomain: "lkge-web.firebaseapp.com",
+            projectId: "lkge-web",
+            storageBucket: "lkge-web.appspot.com",
+            messagingSenderId: "218155008667",
+            appId: "1:218155008667:web:f6780622aab1eef9307c3e",
+            measurementId: "G-ENCNFFQB8C"
+        };
+        firebase.initializeApp(firebaseConfig);
+        
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            var credential = result.credential;
+            var token = credential.accessToken;
+            var user = result.user;
+        }).catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            var email = error.email;
+            var credential = error.credential;
+        });
+    </script>
+</head>
+<body>
+    <div class="hdiv flex">
+        <div class="flexitem himg"><img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/image-removebg-preview.png"></div>
+        <div class="flexitem huse"><div class="center">電子聯絡簿</div></div>
+        <div class="flexitem huse"><div class="center">班幣存摺</div></div>
+        <div class="flexitem huse"><div class="center">線上請假</div></div>
+        <div class="flexitem login">
+            <p class="center logintext">陳柏東</p>
+            <hr width="1" class="xhr">
+            <img class="loginimg" src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/coin.png"></img>
+            <p id="gold" class="center logintext">100000</p>
+            <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/登入.png" onclick="Login()">
+        </div>
+    </div>
+    <div class="bodydiv">
+
+        <!-- 聯絡簿 -->
+        <div class="bookdiv" id="book">
+            <div class="bookmemus flex">
+                <div class="flexitem bookmemu booktdiv"><p class="bookt center">上一週</p></div>
+                <div class="flexitem bookmemu booktdiv"><p class="bookt center">儲存</p></div>
+                <div class="flexitem bookmemu booktdiv"><p class="bookt center">第<span id="week">　</span>週</p></div>
+                <div class="flexitem bookmemu booktdiv"><p class="bookt center">更新</p></div>
+                <div class="flexitem bookmemu booktdiv"><p class="bookt center">下一週</p></div>
+            </div>
+            <table class="booktable">
+                <tr>
+                    <td id="1-1" class="booktd" colspan="2">10/19 獨立研究</td>
+                    <td id="1-2" class="booktd" colspan="2"></td>
+                    <td id="1-3" class="booktd" colspan="2"></td>
+                    <td id="1-4" class="booktd" colspan="2"></td>
+                    <td id="1-5" class="booktd" colspan="2"></td>
+                </tr>
+                <tr>
+                    <td class="bookst">
+                        準<br>時<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        班<br>規<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        作<br>業<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                    </td>
+                    <td class="booktd"><textarea id="2-1" oninput='寫入_聯絡簿(this)'></textarea></td>
+                    <td class="bookst">
+                        準<br>時<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        班<br>規<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        作<br>業<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                    </td>
+                    <td class="booktd"><textarea id="2-2" oninput='寫入_聯絡簿(this)'></textarea></td>
+                    <td class="bookst">
+                        準<br>時<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        班<br>規<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                     <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        作<br>業<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                    </td>
+                    <td class="booktd"><textarea id="2-3" oninput='寫入_聯絡簿(this)'></textarea></td>
+                    <td class="bookst">
+                        準<br>時<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        班<br>規<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                      <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        作<br>業<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                    </td>
+                    <td class="booktd"><textarea id="2-4" oninput='寫入_聯絡簿(this)'></textarea></td>
+                    <td class="bookst">
+                        準<br>時<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        班<br>規<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                        作<br>業<br>：<img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                                                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/星-白.jpg">
+                    </td>
+                    <td class="booktd"><textarea id="2-5" oninput='寫入_聯絡簿(this)'></textarea></td>
+                </tr>
+            </table>
+        </div>
+        <!-- 登入 -->
+        <div>
+
+        </div>
+    </div>
+</body>
+</html>
