@@ -43,54 +43,54 @@
         .bookmemu{margin-left: 10px;margin-right: 10px;}
     </style>
     <script>
-        firebase.initializeApp({
-            projectId: 'lkge-web'
-        });
-        var 資料庫 = firebase.firestore();
-        // 連線firebase
-
-        function 寫入_聯絡簿(輸入框){
-            let fire路徑 = 資料庫.collection('1').doc(輸入框.id);
-            let t輸入資料 = '';
-            let t輸入內容_已切 = 輸入框.value.split('\n');
-
-            for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
-                let for資料 = t輸入內容_已切[次];
-                t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
-            }
-            
-            console.log(t輸入資料)
-            fire路徑.set({
-                total: t輸入資料
-            }).then(() => {
-                console.log('set data successful');
-            });
-        };
-        // 寫入聯絡簿
-        // const firebaseConfig = {
-        //     apiKey: "AIzaSyBmv5-WRZerKSW4irXeZHTv1XRgKhJGX3A",
-        //     authDomain: "lkge-web.firebaseapp.com",
-        //     projectId: "lkge-web",
-        //     storageBucket: "lkge-web.appspot.com",
-        //     messagingSenderId: "218155008667",
-        //     appId: "1:218155008667:web:f6780622aab1eef9307c3e",
-        //     measurementId: "G-ENCNFFQB8C"
-        // };
-        // firebase.initializeApp(firebaseConfig);
-
-        // const provider = new firebase.auth.GoogleAuthProvider();
-        // firebase.auth()
-        // .signInWithPopup(provider)
-        // .then((result) => {
-        //     var credential = result.credential;
-        //     var token = credential.accessToken;
-        //     var user = result.user;
-        // }).catch((error) => {
-        //     var errorCode = error.code;
-        //     var errorMessage = error.message;
-        //     var email = error.email;
-        //     var credential = error.credential;
+        // firebase.initializeApp({
+        //     projectId: 'lkge-web'
         // });
+        // var 資料庫 = firebase.firestore();
+        // // 連線firebase
+
+        // function 寫入_聯絡簿(輸入框){
+        //     let fire路徑 = 資料庫.collection('1').doc(輸入框.id);
+        //     let t輸入資料 = '';
+        //     let t輸入內容_已切 = 輸入框.value.split('\n');
+
+        //     for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
+        //         let for資料 = t輸入內容_已切[次];
+        //         t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
+        //     }
+            
+        //     console.log(t輸入資料)
+        //     fire路徑.set({
+        //         total: t輸入資料
+        //     }).then(() => {
+        //         console.log('set data successful');
+        //     });
+        // };
+        // 寫入聯絡簿
+        const firebaseConfig = {
+            apiKey: "AIzaSyBmv5-WRZerKSW4irXeZHTv1XRgKhJGX3A",
+            authDomain: "lkge-web.firebaseapp.com",
+            projectId: "lkge-web",
+            storageBucket: "lkge-web.appspot.com",
+            messagingSenderId: "218155008667",
+            appId: "1:218155008667:web:f6780622aab1eef9307c3e",
+            measurementId: "G-ENCNFFQB8C"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            var credential = result.credential;
+            var token = credential.accessToken;
+            var user = result.user;
+        }).catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            var email = error.email;
+            var credential = error.credential;
+        });
     </script>
 </head>
 <body>
