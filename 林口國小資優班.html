@@ -60,26 +60,26 @@
             measurementId: "G-ENCNFFQB8C"
         };
         firebase.initializeApp(firebaseConfig);
-        var 資料庫 = firebase.firestore();
-        // 連線firebase
+        // var 資料庫 = firebase.firestore();
+        // // 連線firebase
 
-        function 寫入_聯絡簿(輸入框){
-            let fire路徑 = 資料庫.collection('1').doc(輸入框.id);
-            let t輸入資料 = '';
-            let t輸入內容_已切 = 輸入框.value.split('\n');
+        // function 寫入_聯絡簿(輸入框){
+        //     let fire路徑 = 資料庫.collection('1').doc(輸入框.id);
+        //     let t輸入資料 = '';
+        //     let t輸入內容_已切 = 輸入框.value.split('\n');
 
-            for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
-                let for資料 = t輸入內容_已切[次];
-                t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
-            }
+        //     for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
+        //         let for資料 = t輸入內容_已切[次];
+        //         t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
+        //     }
             
-            console.log(t輸入資料)
-            fire路徑.set({
-                total: t輸入資料
-            }).then(() => {
-                console.log('set data successful');
-            });
-        };
+        //     console.log(t輸入資料)
+        //     fire路徑.set({
+        //         total: t輸入資料
+        //     }).then(() => {
+        //         console.log('set data successful');
+        //     });
+        // };
         // //寫入聯絡簿
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
@@ -95,7 +95,7 @@
                 var errorMessage = error.message;
                 var email = error.email;
                 var credential = error.credential;
-                console.log(1111);
+                console.log('111');
             })}
     </script>
 </head>
