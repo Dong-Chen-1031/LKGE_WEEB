@@ -80,27 +80,29 @@
             });
         };
         //寫入聯絡簿
-
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth()
             .signInWithPopup(provider)
-            .then(userlogin(result)).catch((error) => {
+            .then((result) => {
+                var credential = result.credential;
+                var token = credential.accessToken;
+                var user = result.user;
+                var uid = user.uid;
+                ref = db.collection(re).doc(doo);
+                ref.get().then(doc => {
+                    var userss = doc.data();
+                    var user_name = userss[uid];
+                });
+                console.log(user_name)
+                // document.getElementById('name').innerText
+            }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 var email = error.email;
                 var credential = error.credential;
                 console.log('111');
             })}
-        function userlogin(){
-            var credential = result.credential;
-            var token = credential.accessToken;
-            var user = result.user;
-            var uid = user.uid;
-            console.log(userss)
-            user_name = userss[uid]
-            console.log(user_name)
-        };
     </script>
 </head>
 <body>
