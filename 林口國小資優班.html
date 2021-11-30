@@ -57,6 +57,7 @@
             appId: "1:218155008667:web:f6780622aab1eef9307c3e",
             measurementId: "G-ENCNFFQB8C"
         };
+
         firebase.initializeApp(firebaseConfig);
         var 資料庫 = firebase.firestore();
         // 連線firebase
@@ -87,7 +88,8 @@
                 var credential = result.credential;
                 var token = credential.accessToken;
                 var user = result.user;
-                console.log(user);
+                console.log('USER'+user);
+                console.log('TOKEN'+token)
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
