@@ -83,7 +83,7 @@
         function get資料庫(re,doo){
             ref = db.collection(re).doc(doo);
             ref.get().then(doc => {
-                console.log(doc.data());
+                return doc.data();
             });
         }
         //寫入聯絡簿
