@@ -80,20 +80,22 @@
             });
         };
 
-        function get資料庫(re,doo){
+        function get資料庫(re,doo,na){
             ref = db.collection(re).doc(doo);
             ref.get().then(doc => {
-                return doc.data();
+                return {name: 'Domo', num: 2}
             });
-        }
+        };
+        console.log(get資料庫('目錄','學生'))
+        
         //寫入聯絡簿
-
+        // console.log(get資料庫('目錄','學生'))
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
-                let userss = get資料庫('目錄','學生')
+                var userss = get資料庫('目錄','學生')
                 var credential = result.credential;
                 var token = credential.accessToken;
                 var user = result.user;
