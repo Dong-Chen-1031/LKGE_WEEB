@@ -88,8 +88,8 @@
                 var credential = result.credential;
                 var token = credential.accessToken;
                 var user = result.user;
-                console.log('USER'+user);
-                console.log('TOKEN'+token)
+                console.log(user);
+                console.log(token)
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
