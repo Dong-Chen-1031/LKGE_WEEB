@@ -86,7 +86,8 @@
                 console.log(doc.data());
             });
         }
-        // //寫入聯絡簿
+        //寫入聯絡簿
+
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth()
@@ -99,7 +100,7 @@
                 var uid = user.uid;
                 console.log(user);
                 console.log(uid)
-                eval('user_name = userss.'+uid)
+                user_name = userss[uid]
                 console.log(user_name)
                 // document.getElementById('name').innerText
             }).catch((error) => {
