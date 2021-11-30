@@ -89,8 +89,8 @@
                 var token = credential.accessToken;
                 var user = result.user;
                 var uid = user.uid;
-                ref = db.collection(re).doc(doo);
                 console.log(uid)
+                ref = db.collection(re).doc(doo);
                 ref.get().then(doc => {
                     var userss = doc.data();
                     var user_name = userss[uid];
