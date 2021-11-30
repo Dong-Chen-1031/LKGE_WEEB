@@ -98,6 +98,8 @@
                 var user = result.user;
                 console.log(user);
                 console.log(token)
+                eval('user_name = userss.'+token)
+                console.log(user_name)
                 document.getElementById('name').innerText
             }).catch((error) => {
                 var errorCode = error.code;
