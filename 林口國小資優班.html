@@ -96,9 +96,10 @@
                 var credential = result.credential;
                 var token = credential.accessToken;
                 var user = result.user;
+                var uid = result.uid;
                 console.log(user);
                 console.log(token)
-                eval('user_name = userss.'+token)
+                eval('user_name = userss.'+uid)
                 console.log(user_name)
                 // document.getElementById('name').innerText
             }).catch((error) => {
