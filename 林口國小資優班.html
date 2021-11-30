@@ -59,11 +59,11 @@
         };
 
         firebase.initializeApp(firebaseConfig);
-        var 資料庫 = firebase.firestore();
+        var db = firebase.firestore();
         // 連線firebase
 
         function 寫入_聯絡簿(輸入框){
-            let fire路徑 = 資料庫.collection('1').doc(輸入框.id);
+            let fire路徑 = db.collection('1').doc(輸入框.id);
             let t輸入資料 = '';
             let t輸入內容_已切 = 輸入框.value.split('\n');
 
@@ -79,18 +79,26 @@
                 console.log('set data successful');
             });
         };
+
+        function get資料庫(re,doo){
+            ref = db.collection(re).doc(doo);
+            ref.get().then(doc => {
+                console.log(doc.data());
+            });
+        }
         // //寫入聯絡簿
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth()
             .signInWithPopup(provider)
             .then((result) => {
+                let userss = get資料庫('目錄','學生')
                 var credential = result.credential;
                 var token = credential.accessToken;
                 var user = result.user;
                 console.log(user);
                 console.log(token)
-                document.getElementById('name').innerText=user.displayName
+                document.getElementById('name').innerText
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
