@@ -79,40 +79,28 @@
                 console.log('set data successful');
             });
         };
-
-        function get資料庫(re,doo,na){
-            ref = db.collection(re).doc(doo);
-            ref.get().then(doc => {
-                return {name: 'Domo', num: 2}
-            });
-        };
-        console.log(get資料庫('目錄','學生'))
-        
         //寫入聯絡簿
-        // console.log(get資料庫('目錄','學生'))
+
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth()
             .signInWithPopup(provider)
-            .then((result) => {
-                var userss = get資料庫('目錄','學生')
-                var credential = result.credential;
-                var token = credential.accessToken;
-                var user = result.user;
-                var uid = user.uid;
-                // console.log(user);
-                // console.log(uid)
-                console.log(userss)
-                user_name = userss[uid]
-                console.log(user_name)
-                // document.getElementById('name').innerText
-            }).catch((error) => {
+            .then(userlogin(result)).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 var email = error.email;
                 var credential = error.credential;
                 console.log('111');
             })}
+        function userlogin(){
+            var credential = result.credential;
+            var token = credential.accessToken;
+            var user = result.user;
+            var uid = user.uid;
+            console.log(userss)
+            user_name = userss[uid]
+            console.log(user_name)
+        };
     </script>
 </head>
 <body>
