@@ -90,6 +90,7 @@
                 var user = result.user;
                 console.log(user);
                 console.log(token)
+                document.getElementById('name').innerText=user.displayName
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -107,7 +108,7 @@
         <div class="flexitem huse"><div class="center">班幣存摺</div></div>
         <div class="flexitem huse"><div class="center">線上請假</div></div>
         <div class="flexitem login">
-            <p class="center logintext">請先登入</p>
+            <p class="center logintext" id='name'>請先登入</p>
             <hr width="1" class="xhr">
             <img class="goldimg" src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/coin.png"></img>
             <p id="gold" class="center logintext">--</p>
