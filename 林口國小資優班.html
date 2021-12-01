@@ -99,15 +99,20 @@
                 var credential = error.credential;
                 console.log('111');
             })}
+        var userss = null
+        function get2(d){
+                userss = d
+                console.log(d)
+        }
         function getdb(re,doo,EID){
             ref = db.collection(re).doc(doo);
             ref.get().then(doc => {
                 // document.getElementById(EID).innerText=String(doc.data());
-                console.log
-                return doc.data
+                get2(doc.data()); 
             });
         }
-        console.log(getdb('目錄','學生','javascript-01'))
+        getdb('目錄','學生','javascript-01')
+        console.log(userss)
     </script>
 </head>
 <body>
