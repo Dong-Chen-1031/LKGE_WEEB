@@ -90,11 +90,6 @@
                 var user = result.user;
                 var uid = user.uid;
                 console.log(uid)
-                ref = db.collection(re).doc(doo);
-                ref.get().then(doc => {
-                    var userss = doc.data();
-                    var user_name = userss[uid];
-                });
                 console.log(user_name)
                 // document.getElementById('name').innerText
             }).catch((error) => {
@@ -104,6 +99,15 @@
                 var credential = error.credential;
                 console.log('111');
             })}
+        function getdb(re,doo,EID){
+            ref = db.collection(re).doc(doo);
+            ref.get().then(doc => {
+                // document.getElementById(EID).innerText=String(doc.data());
+                console.log
+                return doc.data
+            });
+        }
+        console.log(getdb('目錄','學生','javascript-01'))
     </script>
 </head>
 <body>
@@ -199,5 +203,6 @@
 
         </div>
     </div>
+    <p id="javascript-01" style="display: none;"></p>
 </body>
 </html>
