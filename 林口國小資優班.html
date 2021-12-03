@@ -162,7 +162,7 @@
         //設置變數
         var userss
         var uid
-
+        var username
 
         //寫入聯絡簿
         function 寫入_聯絡簿(輸入框){
@@ -193,6 +193,8 @@
                 setTimeout(function() { 
                     console.log(userss)
                     console.log(userss[uid])
+                    username = userss[uid]
+                    document.getElementById('name').innerText = username
                 }, 5000);
                 // document.getElementById('name').innerText
             }).catch((error) => {
