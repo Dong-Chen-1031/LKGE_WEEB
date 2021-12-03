@@ -144,6 +144,7 @@
     </div>
     <p id="javascript-01" style="display: none;"></p>
     <script>
+        // 連線firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBmv5-WRZerKSW4irXeZHTv1XRgKhJGX3A",
             authDomain: "lkge-web.firebaseapp.com",
@@ -156,10 +157,14 @@
 
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
-        // 連線firebase
+        
 
+        //設置變數
+        var userss = null
+
+
+        //寫入聯絡簿
         function 寫入_聯絡簿(輸入框){
-            let fire路徑 = db.collection('1').doc(輸入框.id);
             let t輸入資料 = '';
             let t輸入內容_已切 = 輸入框.value.split('\n');
 
@@ -167,19 +172,16 @@
                 let for資料 = t輸入內容_已切[次];
                 t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
             }
-            
+            setdb(t輸入資料,'1',輸入框.id)
             console.log(t輸入資料)
-            fire路徑.set({
-                total: t輸入資料
-            }).then(() => {
-                console.log('set data successful');
-            });
+            
         };
-        //寫入聯絡簿
+
+
+        //登入
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth()
-            .signInWithPopup(provider)
+            firebase.auth().signInWithPopup(provider)
             .then((result) => {
                 var credential = result.credential;
                 var token = credential.accessToken;
@@ -187,6 +189,10 @@
                 var uid = user.uid;
                 console.log(uid)
                 console.log(user_name)
+                getdb(目錄,學生)
+                setTimeout(() => {
+                    console.log(userss)
+                }, 1000);
                 // document.getElementById('name').innerText
             }).catch((error) => {
                 var errorCode = error.code;
@@ -195,27 +201,24 @@
                 var credential = error.credential;
                 console.log('111');
             })}
-        var userss = null
-        function get2(d){
-                userss = d
-                console.log(d)
-        }
-        function getdb(re,doo,EID){
+        
+
+        //firebase 功能
+        function getdb(re,doo){ //取得資料
             ref = db.collection(re).doc(doo);
             ref.get().then(doc => {
-                // document.getElementById(EID).innerText=String(doc.data());
-                get2(doc.data()); 
+                userss = doc.data(); 
             });
         }
-        getdb('目錄','學生','javascript-01')
-        setTimeout(test,10000)
-        function test (){
-            while (true) {
-                console.log(userss)
-            }
+
+        function setdb(t輸入資料,coll,doc){ //寫入資料
+            let db路徑 = db.collection(coll).doc(doc);
+            db路徑.set({
+                total: t輸入資料
+            }).then(() => {
+                console.log('set data successful');
+            });
         }
-            
-        
     </script>
 </body>
 </html>
