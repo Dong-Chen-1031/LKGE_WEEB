@@ -160,7 +160,8 @@
         
 
         //設置變數
-        var userss = null
+        var userss
+        var uid
 
 
         //寫入聯絡簿
@@ -186,12 +187,12 @@
                 var credential = result.credential;
                 var token = credential.accessToken;
                 var user = result.user;
-                var uid = user.uid;
+                uid = user.uid;
                 console.log(uid)
                 getdb('目錄','學生')
                 setTimeout(function() { 
-                    console.log(userss)
-                }, 10000);
+                    console.log(userss[uid])
+                }, 1000);
                 // document.getElementById('name').innerText
             }).catch((error) => {
                 var errorCode = error.code;
