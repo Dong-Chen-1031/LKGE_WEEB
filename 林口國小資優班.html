@@ -160,7 +160,7 @@
         
 
         //設置變數
-        var userss
+        var return1
         var uid
         var username
 
@@ -191,10 +191,15 @@
                 console.log(uid)
                 getdb('目錄','學生') 
                 setTimeout(function() { 
-                    console.log(userss)
-                    console.log(userss[uid])
+                    console.log(return1[uid])
                     username = userss[uid]
                     document.getElementById('name').innerText = username
+                }, 5000);
+                getdb(username,'聯絡簿')
+                setTimeout(function() { 
+                    console.log(return1[uid])
+                    // username = userss[uid]
+                    // document.getElementById('name').innerText = username
                 }, 5000);
             }).catch((error) => {
                 var errorCode = error.code;
@@ -209,7 +214,7 @@
         function getdb(re,doo){ //取得資料
             ref = db.collection(re).doc(doo);
             ref.get().then(doc => {
-                userss = doc.data(); 
+                return1 = doc.data(); 
             });
         }
 
