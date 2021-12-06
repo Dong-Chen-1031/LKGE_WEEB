@@ -194,13 +194,14 @@
                     username = return1[uid]
                     console.log(username)
                     document.getElementById('name').innerText = username
+                    getdb(username,'聯絡簿')
                     setTimeout(function() { 
-                    console.log(return1)
+                        console.log(return1)
                     // username = userss[uid]
                     // document.getElementById('name').innerText = username
                     }, 5000);
                 }, 5000);
-                getdb(username,'聯絡簿')
+                
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
