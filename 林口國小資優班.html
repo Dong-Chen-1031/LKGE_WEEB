@@ -199,19 +199,8 @@
                     userarr[doc.id] = doc.data();
                     console.log(userarr);
                 });
+                document.getElementById('gold').innerText = userarr['聯絡簿']['班幣']
                 });
-
-                // setTimeout(function() { 
-                //     username = return1[uid]
-                //     console.log(username)
-                //     document.getElementById('name').innerText = username
-                //     getdb(username,'聯絡簿')
-                //     setTimeout(function() { 
-                //         console.log(return1)
-                //         document.getElementById('gold')
-                //     }, 5000);
-                // }, 5000);
-                
             }).catch((error) => {
                 var errorCode = error.code;
                 var errorMessage = error.message;
