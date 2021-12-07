@@ -195,20 +195,22 @@
                 console.log(username);
                 document.getElementById('name').innerText = username;
                 db.collection(username).get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    userarr[doc.id] = doc.data();
-                    console.log(userarr);
-                });
+                    querySnapshot.forEach(doc => {
+                        userarr[doc.id] = doc.data();
+                        console.log(userarr);
+                    });
+                })
                 document.getElementById('gold').innerText = userarr['聯絡簿']['班幣']
+                db.collection(username).get().then(querySnapshot => {
+                    querySnapshot.forEach(doc => {
+                        console.log(userarr);
+                    });
                 });
             }).catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                var email = error.email;
-                var credential = error.credential;
                 console.log('111');
-            })}
-        
+            })
+        }
+
         //firebase 功能
         function setdb(t輸入資料,coll,doc){ //寫入資料
             let db路徑 = db.collection(coll).doc(doc);
