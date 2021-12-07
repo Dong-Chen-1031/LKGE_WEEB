@@ -162,6 +162,7 @@
         var uid
         var username 
         var 目錄 = {}
+        var userarr = {}
 
         //取得基本資料
         var ref = db.collection('目錄');
@@ -200,7 +201,7 @@
                 document.getElementById('name').innerText = username;
                 db.collection(username).get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    目錄[doc.id] = doc.data();
+                    userarr[doc.id] = doc.data();
                     console.log(目錄);
                 });
                 });
