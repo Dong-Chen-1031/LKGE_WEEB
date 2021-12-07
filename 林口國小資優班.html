@@ -184,6 +184,7 @@
         };
         //登入
         function Login(){
+            console.log(目錄['學生'])
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithPopup(provider)
             .then((result) => {
