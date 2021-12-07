@@ -153,20 +153,13 @@
         };
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
-<<<<<<< HEAD
-=======
-
->>>>>>> 5c413096674042bde7750556660eaedc1d25d49b
         //設置變數
         var return1
         var uid
         var username 
         var 目錄 = {}
         var userarr = {}
-<<<<<<< HEAD
-=======
 
->>>>>>> 5c413096674042bde7750556660eaedc1d25d49b
         //取得基本資料
         var ref = db.collection('目錄');
         ref.get().then(querySnapshot => {
@@ -226,11 +219,6 @@
             })}
         
         //firebase 功能
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 5c413096674042bde7750556660eaedc1d25d49b
         function setdb(t輸入資料,coll,doc){ //寫入資料
             let db路徑 = db.collection(coll).doc(doc);
             db路徑.set({
