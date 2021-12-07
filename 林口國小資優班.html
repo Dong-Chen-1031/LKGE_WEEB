@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!-- https://www.oxxostudio.tw/articles/201905/firebase-firestore.html -->
 <!-- https://dong-chen-1031.github.io/LKGE_WEEB/林口國小資優班.html -->
-
 <html>
 <head>
     <title>林口國小資優班</title>
@@ -65,7 +64,6 @@
         </div>
     </div>
     <div class="bodydiv">
-
         <!-- 聯絡簿 -->
         <div class="bookdiv" id="book">
             <div class="bookmemus flex">
@@ -139,13 +137,12 @@
         </div>
         <!-- 登入 -->
         <div>
-
         </div>
     </div>
     <p id="javascript-01" style="display: none;"></p>
     <script>
         // 連線firebase
-        const firebaseConfig = {
+        var firebaseConfig = {
             apiKey: "AIzaSyBmv5-WRZerKSW4irXeZHTv1XRgKhJGX3A",
             authDomain: "lkge-web.firebaseapp.com",
             projectId: "lkge-web",
@@ -154,21 +151,28 @@
             appId: "1:218155008667:web:f6780622aab1eef9307c3e",
             measurementId: "G-ENCNFFQB8C"
         };
-
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
-        
-
         //設置變數
         var return1
         var uid
-        var username
-
+        var username 
+        var 目錄 = {}
+        var userarr = {}
+        //取得基本資料
+        var ref = db.collection('目錄');
+        ref.get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            目錄[doc.id] = doc.data()
+            console.log(目錄);
+        });
+        });
+    </script>
+    <script>
         //寫入聯絡簿
         function 寫入_聯絡簿(輸入框){
             let t輸入資料 = '';
             let t輸入內容_已切 = 輸入框.value.split('\n');
-
             for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
                 let for資料 = t輸入內容_已切[次];
                 t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
@@ -177,29 +181,33 @@
             console.log(t輸入資料)
             
         };
-
-
         //登入
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithPopup(provider)
             .then((result) => {
-                var credential = result.credential;
-                var token = credential.accessToken;
-                var user = result.user;
                 uid = user.uid;
-                console.log(uid)
-                getdb('目錄','學生') 
-                setTimeout(function() { 
-                    username = return1[uid]
-                    console.log(username)
-                    document.getElementById('name').innerText = username
-                    getdb(username,'聯絡簿')
-                    setTimeout(function() { 
-                        console.log(return1)
-                        document.getElementById('gold')
-                    }, 5000);
-                }, 5000);
+                console.log(uid);
+                username = 目錄['學生'][uid]; 
+                console.log(username);
+                document.getElementById('name').innerText = username;
+                db.collection(username).get().then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    userarr[doc.id] = doc.data();
+                    console.log(userarr);
+                });
+                });
+
+                // setTimeout(function() { 
+                //     username = return1[uid]
+                //     console.log(username)
+                //     document.getElementById('name').innerText = username
+                //     getdb(username,'聯絡簿')
+                //     setTimeout(function() { 
+                //         console.log(return1)
+                //         document.getElementById('gold')
+                //     }, 5000);
+                // }, 5000);
                 
             }).catch((error) => {
                 var errorCode = error.code;
@@ -209,15 +217,7 @@
                 console.log('111');
             })}
         
-
         //firebase 功能
-        function getdb(re,doo){ //取得資料
-            ref = db.collection(re).doc(doo);
-            ref.get().then(doc => {
-                return1 = doc.data(); 
-            });
-        }
-
         function setdb(t輸入資料,coll,doc){ //寫入資料
             let db路徑 = db.collection(coll).doc(doc);
             db路徑.set({
