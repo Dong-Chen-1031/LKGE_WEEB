@@ -188,6 +188,7 @@
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithPopup(provider)
             .then((result) => {
+                var user = result.user;
                 uid = user.uid;
                 console.log(uid);
                 console.log(目錄['學生'][uid])
