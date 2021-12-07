@@ -189,15 +189,16 @@
             .then((result) => {
                 uid = user.uid;
                 console.log(uid);
+                console.log(目錄['學生'][uid])
                 username = 目錄['學生'][uid]; 
                 console.log(username);
                 document.getElementById('name').innerText = username;
-                db.collection(username).get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    userarr[doc.id] = doc.data();
-                    console.log(userarr);
-                });
-                });
+                // db.collection(username).get().then(querySnapshot => {
+                // querySnapshot.forEach(doc => {
+                //     userarr[doc.id] = doc.data();
+                //     console.log(userarr);
+                // });
+                // });
 
                 // setTimeout(function() { 
                 //     username = return1[uid]
