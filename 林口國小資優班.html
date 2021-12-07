@@ -202,7 +202,7 @@
                 db.collection(username).get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     userarr[doc.id] = doc.data();
-                    console.log(目錄);
+                    console.log(userarr);
                 });
                 });
 
