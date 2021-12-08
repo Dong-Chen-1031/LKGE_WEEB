@@ -203,12 +203,12 @@
                 setTimeout(function(){
                     console.log(userarr['聯絡簿']['班幣'])
                     document.getElementById('gold').innerText = userarr['聯絡簿']['班幣']
-                    db.collection(username).get().then(querySnapshot => {
+                    db.collection(username).collection('聯絡簿').get().then(querySnapshot => {
                         querySnapshot.forEach(doc => {
-                            console.log(userarr);
+                            console.log(doc.id,doc.data());
                         }); 
                     });
-                },10000)
+                },5000)
                 
             }).catch((error) => {
                 console.log('111');
