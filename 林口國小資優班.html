@@ -200,6 +200,7 @@
                         console.log(userarr);
                     });
                 });
+                console.log(userarr['聯絡簿']['班幣'])
                 document.getElementById('gold').innerText = userarr['聯絡簿']['班幣']
                 db.collection(username).get().then(querySnapshot => {
                     querySnapshot.forEach(doc => {
