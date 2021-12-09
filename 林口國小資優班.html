@@ -163,10 +163,10 @@
         //取得基本資料
         var ref = db.collection('目錄');
         ref.get().then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-            目錄[doc.id] = doc.data()
-            console.log(目錄);
-        });
+            querySnapshot.forEach(doc => {
+                目錄[doc.id] = doc.data()
+                console.log(目錄);
+            });
         });
     </script>
     <script>
@@ -203,11 +203,11 @@
                 setTimeout(function(){
                     console.log(userarr['聯絡簿']['班幣'])
                     document.getElementById('gold').innerText = userarr['聯絡簿']['班幣']
-                    db.collection(username).collection('聯絡簿').get().then(querySnapshot => {
-                        querySnapshot.forEach(doc => {
-                            console.log(doc.id,doc.data());
-                        }); 
-                    });
+                    // db.collection(username).get().then(querySnapshot => {
+                    //     querySnapshot.forEach(doc => {
+                    //         console.log(doc.id,doc.data());
+                    //     }); 
+                    // });
                 },5000)
                 
             }).catch((error) => {
