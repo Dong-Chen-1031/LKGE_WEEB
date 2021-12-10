@@ -159,7 +159,7 @@
         var username 
         var 目錄 = {}
         var userarr = {}
-
+        var llb = {}
         //取得基本資料
         var ref = db.collection('目錄');
         ref.get().then(querySnapshot => {
@@ -184,7 +184,6 @@
         };
         //登入
         function Login(){
-            console.log(目錄['學生'])
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().signInWithPopup(provider)
             .then((result) => {
@@ -203,11 +202,7 @@
                 setTimeout(function(){
                     console.log(userarr['第1周第1堂'])
                     document.getElementById('gold').innerText = userarr['班幣']['班幣']
-                    // db.collection(username).get().then(querySnapshot => {
-                    //     querySnapshot.forEach(doc => {
-                    //         console.log(doc.id,doc.data());
-                    //     }); 
-                    // });
+                    document.getElementById('1-1').innerText = userarr['第1周第1堂']['名稱']
                 },5000)
                 
             }).catch((error) => {
