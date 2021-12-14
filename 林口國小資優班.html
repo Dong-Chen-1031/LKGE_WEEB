@@ -43,7 +43,7 @@
         .booktdiv{border-radius: 10px;background-color: #388ce1;width:8%;}
         .bookmemu{margin-left: 10px;margin-right: 10px;}
         .TeMane{font-size: 2px;margin-bottom: 20px;}
-        .TeManes{margin-top: 10px;margin-left: 15px;font-size: 20px;margin-bottom: 5px;border: 1px red solid;color: red;}
+        .TeManes{margin-top: 10px;margin-left: 15px;font-size: 20px;margin-bottom: 5px;border: 1px red solid;color: red;display: none;}
     </style>
     <script>
         // location.href = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E6%9E%97%E5%8F%A3%E5%9C%8B%E5%B0%8F%E8%B3%87%E5%84%AA%E7%8F%AD.html'
@@ -136,30 +136,34 @@
                     <td class="booktd"><textarea id="2-5" oninput='寫入_聯絡簿(this)'></textarea></td>
                 </tr>
                 <tr>
-                    <td id="1-1" class="booktd" colspan="2">
-                    <div class=" flex">
-                        <p class="TeMane flexitem">授課教師簽名</p>
-                        <p class="TeManes"><small>教師</small> 黃詩婷</p>
-                    </div></td>
-                    <td id="1-2" class="booktd" colspan="2">
-                    <div class=" flex">
-                        <p class="TeMane flexitem">授課教師簽名</p>
-                        <p class="TeManes"><small>教師</small> 侯貞伊</p>
-                    </div></td>
-                    <td id="1-3" class="booktd" colspan="2">
-                    <div class=" flex">
-                        <p class="TeMane flexitem">授課教師簽名</p>
-                        <p class="TeManes"><small>教師</small> 傅蓉</p>
-                    </div></td>
-                    <td id="1-4" class="booktd" colspan="2">
-                    <div class=" flex">
-                        <p class="TeMane flexitem">授課教師簽名</p>
-                        <p class="TeManes"><small>教師</small> 傅蓉</p>
-                    </div></td>
                     <td id="1-5" class="booktd" colspan="2">
-                        <div class=" flex">
+                        <div class="flex">
                             <p class="TeMane flexitem">授課教師簽名</p>
-                            <p class="TeManes"><small>教師</small> 傅蓉</p>
+                            <div class="TeManes"  id="3-1-div"><small>教師</small> <span id="3-1-name">傅蓉</span></div>
+                        </div>
+                    </td>
+                    <td id="1-5" class="booktd" colspan="2">
+                        <div class="flex">
+                            <p class="TeMane flexitem">授課教師簽名</p>
+                            <div class="TeManes"  id="3-2-div"><small>教師</small> <span id="3-2-name">傅蓉</span></div>
+                        </div>
+                    </td>
+                    <td id="1-5" class="booktd" colspan="2">
+                        <div class="flex">
+                            <p class="TeMane flexitem">授課教師簽名</p>
+                            <div class="TeManes" id="3-3-div"><small>教師</small> <span id="3-3-name">傅蓉</span></div>
+                        </div>
+                    </td>
+                    <td id="1-5" class="booktd" colspan="2">
+                        <div class="flex">
+                            <p class="TeMane flexitem">授課教師簽名</p>
+                            <div class="TeManes"  id="3-4-div"><small>教師</small> <span id="3-4-name">傅蓉</span></div>
+                        </div>
+                    </td>
+                    <td class="booktd" colspan="2">
+                        <div class="flex">
+                            <p class="TeMane flexitem">授課教師簽名</p>
+                            <div class="TeManes"  id="3-5-div"><small>教師</small> <span id="3-5-name">傅蓉</span></div>
                         </div>
                     </td>
                 </tr>
@@ -241,6 +245,7 @@
                     document.getElementById('gold').innerText = userarr['班幣']['班幣']
                     document.getElementById('1-1').innerText = userarr['第1周第1堂']['名稱']
                     document.getElementById('2-1').innerText = userarr['第1周第1堂']['內容']
+                    document.getElementById('3-1-div').style.display = 'block'
                 },5000)
                 
             }).catch((error) => {
