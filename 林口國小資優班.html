@@ -211,17 +211,17 @@
     </script>
     <script>
         //寫入聯絡簿
-        function 寫入_聯絡簿(輸入框){
-            let t輸入資料 = '';
-            let t輸入內容_已切 = 輸入框.value.split('\n');
-            for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
-                let for資料 = t輸入內容_已切[次];
-                t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
-            }
-            let t輸入內容_已切 = 輸入框.id.split('\n');
-            setdb(t輸入資料,username,)
-            console.log(t輸入資料)
-        };
+        // function 寫入_聯絡簿(輸入框){
+        //     let t輸入資料 = '';
+        //     let t輸入內容_已切 = 輸入框.value.split('\n');
+        //     for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
+        //         let for資料 = t輸入內容_已切[次];
+        //         t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
+        //     }
+        //     let t輸入內容_已切 = 輸入框.id.split('\n');
+        //     setdb(t輸入資料,username,)
+        //     console.log(t輸入資料)
+        // };
         //登入
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
