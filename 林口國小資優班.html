@@ -206,7 +206,6 @@
         ref.get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 目錄[doc.id] = doc.data()
-                console.log(目錄);
             });
         });
     </script>
@@ -221,7 +220,6 @@
             }
             setdb(t輸入資料,'1',輸入框.id)
             console.log(t輸入資料)
-            
         };
         //登入
         function Login(){
@@ -237,32 +235,36 @@
                 db.collection(username).get().then(querySnapshot => {
                     querySnapshot.forEach(doc => {
                         userarr[doc.id] = doc.data();
-                        console.log(userarr);
                     });
                 });
                 setTimeout(function(){
-                    console.log(userarr['第1周第1堂'])
-                    document.getElementById('gold').innerText = userarr['班幣']['班幣']
-                    document.getElementById('1-1').innerText = userarr['第1周第1堂']['名稱']
-                    document.getElementById('2-1').innerText = userarr['第1周第1堂']['內容']
-                    document.getElementById('3-1-div').style.display = 'block'
-                    document.getElementById('3-1-name').innerText = userarr['第1周第1堂']['教師簽章']
                     var star_b = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg' 
-                    if (userarr['第1周第1堂']['準時'][0]){
-                        document.getElementById('2-1-star-1').src = star_b ;
-                    }; 
-                    for (var t = 0; t < userarr['第1周第1堂']['班規'].length; t++) {
-                        let if_star = userarr['第1周第1堂']['班規'][t];
-                        if (if_star){
-                            document.getElementById('2-1-star-'+String(2+t)).src = star_b ;
+                    document.getElementById('gold').innerText = userarr['班幣']['班幣']
+                    for (var index = 1; index < 2; index++) {
+                        var user2 = userarr['第1周第'+String(index)+'堂']
+                        document.getElementById('1-'+String(index)).innerText = user2['名稱']
+                        document.getElementById('2-'+String(index)).innerText = user2['內容']
+                        if(user2['教師簽章'] != null){
+                            document.getElementById('3-1-div').style.display = 'block';
+                            document.getElementById('3-1-name').innerText = user2['教師簽章'];
                         };
-                    };
-                    for (var t = 0; t < userarr['第1周第1堂']['作業'].length; t++) {
-                        let if_star = userarr['第1周第1堂']['作業'][t];
-                        if (if_star){
-                            document.getElementById('2-1-star-'+String(5+t)).src = star_b ;
+                        if (user2['準時'][0]){
+                            document.getElementById('2-1-star-1').src = star_b ;
+                        }; 
+                        for (var t = 0; t < user2['班規'].length; t++) {
+                            let if_star = user2['班規'][t];
+                            if (if_star){
+                                document.getElementById('2-1-star-'+String(2+t)).src = star_b ;
+                            };
                         };
-                    };
+                        for (var t = 0; t < user2['作業'].length; t++) {
+                            let if_star = user2['作業'][t];
+                            if (if_star){
+                                document.getElementById('2-1-star-'+String(5+t)).src = star_b ;
+                            };
+                        };
+                    }
+                    
                 },5000)
                 
             }).catch((error) => {
