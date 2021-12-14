@@ -247,6 +247,9 @@
                     document.getElementById('2-1').innerText = userarr['第1周第1堂']['內容']
                     document.getElementById('3-1-div').style.display = 'block'
                     document.getElementById('3-1-name').innerText = userarr['第1周第1堂']['教師簽章']
+                    if (userarr['第1周第1堂']['準時'][0]){
+                        document.getElementById('2-1-star-1').src = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg';
+                    }; 
                 },5000)
                 
             }).catch((error) => {
