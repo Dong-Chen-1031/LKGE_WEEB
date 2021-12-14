@@ -218,7 +218,8 @@
                 let for資料 = t輸入內容_已切[次];
                 t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
             }
-            setdb(t輸入資料,'1',輸入框.id)
+            let t輸入內容_已切 = 輸入框.id.split('\n');
+            setdb(t輸入資料,username,)
             console.log(t輸入資料)
         };
         //登入
