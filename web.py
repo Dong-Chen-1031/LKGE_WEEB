@@ -36,7 +36,7 @@ while True:
     click('/html/body/div[3]/div[3]/div[3]/div[2]/div[4]/div/div[3]/button') #攻擊
     time.sleep(3)
     b1 = driver.find_element_by_xpath('/html/body/div[11]/div/div/div/div/div[3]/div/div[2]/div[1]')
-    if b1.get_attribute('class') == 'cursor_pointer choice-button attack_modal_sprite btn_4a1 pgo-style-input-answer-2o3iYm':
+    if b1.get_attribute('class') == 'cursor_pointer choice-button attack_modal_m_sprite btn_3a1 active pgo-style-input-answer-2o3iYm':
         pass
     # time.sleep(3)
     # click('/html/body/div[11]/div/div/div/div/div[3]/div/div[2]/div[1]')
