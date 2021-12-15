@@ -26,7 +26,7 @@
         .login{margin-left: auto;width: 20%;background-color: #cf7c1d;}
         .center{text-align: center;margin-left: auto;margin-right: auto;margin-top: auto;margin-bottom: auto;}
         .goldimg{width: 20px;height: 20px;margin-top: auto;margin-bottom: auto;}
-        .loginimg{width: 35px;height: 30px;margin-top: auto;margin-bottom: auto;}
+        .loginimg{width: 35px;height: 30px;margin-top: auto;margin-bottom: auto; cursor: pointer;}
         .xhr{height: 30%;margin-top: auto;margin-bottom: auto;background-color: #f5f5f5;border: 0px;}
         .logintext{color: #f5f5f5;font-size: 20px;}
         body{height: 100%;background-color: #092846;}
@@ -40,7 +40,7 @@
         .bookst{width: 3%;border: 2px solid #092846;text-align: center;}
         .bookst>img{height: 30px;}
         .bookmemus{width: 90%;height: 5%;justify-content:center;padding-top: 10px;padding-bottom: 10px;}
-        .booktdiv{border-radius: 10px;background-color: #388ce1;width:8%;}
+        .booktdiv{border-radius: 10px;background-color: #388ce1;width:8%;cursor: pointer;}
         .bookmemu{margin-left: 10px;margin-right: 10px;}
         .TeMane{font-size: 2px;margin-bottom: 20px;}
         .TeManes{margin-top: 10px;margin-left: 15px;font-size: 20px;margin-bottom: 5px;border: 1px red solid;color: red;display: none;}
@@ -53,10 +53,10 @@
 <body>
     <div class="hdiv flex">
         <div class="flexitem himg"><img src="圖片/image-removebg-preview.png"></div>
-        <div class="flexitem huse"><div class="center">電子聯絡簿</div></div>
-        <div class="flexitem huse"><div class="center">資優商城</div></div>
-        <div class="flexitem huse"><div class="center">班幣存摺</div></div>
-        <div class="flexitem huse"><div class="center">線上請假</div></div>
+        <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">電子聯絡簿</div></div>
+        <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">資優商城</div></div>
+        <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">班幣存摺</div></div>
+        <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">線上請假</div></div>
         <div class="flexitem login">
             <p class="center logintext" id='name'>請先登入</p>
             <hr width="1" class="xhr">
@@ -71,7 +71,7 @@
             <div class="bookmemus flex">
                 <div class="flexitem bookmemu booktdiv"><p class="bookt center">上一週</p></div>
                 <div class="flexitem bookmemu booktdiv"><p class="bookt center">儲存</p></div>
-                <div class="flexitem bookmemu booktdiv"><p class="bookt center">第<span id="week">　</span>週</p></div>
+                <div class="flexitem bookmemu booktdiv"><p class="bookt center" style="cursor: default;">第<span id="week">　</span>週</p></div>
                 <div class="flexitem bookmemu booktdiv"><p class="bookt center">更新</p></div>
                 <div class="flexitem bookmemu booktdiv"><p class="bookt center">下一週</p></div>
             </div>
@@ -201,6 +201,7 @@
         var 目錄 = {}
         var userarr = {}
         var llb = {}
+        var 周 = 1
         //取得基本資料
         var ref = db.collection('目錄');
         ref.get().then(querySnapshot => {
@@ -211,17 +212,21 @@
     </script>
     <script>
         //寫入聯絡簿
-        // function 寫入_聯絡簿(輸入框){
-        //     let t輸入資料 = '';
-        //     let t輸入內容_已切 = 輸入框.value.split('\n');
-        //     for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
-        //         let for資料 = t輸入內容_已切[次];
-        //         t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
-        //     }
-        //     let t輸入內容_已切 = 輸入框.id.split('\n');
-        //     setdb(t輸入資料,username,)
-        //     console.log(t輸入資料)
-        // };
+        function 寫入_聯絡簿(輸入框){
+            let t輸入資料 = '';
+            let t輸入內容_已切 = 輸入框.value.split('\n');
+            for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
+                let for資料 = t輸入內容_已切[次];
+                t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
+            }
+            let t輸入id = 輸入框.id.split('-')[1];
+            let t輸出資料 = {
+                內容:t輸入資料
+            }
+            setdb(t輸出資料,'Dong Chen','第1周第2堂')
+            console.log(t輸入id)
+        };
+
         //登入
         function Login(){
             const provider = new firebase.auth.GoogleAuthProvider();
@@ -241,6 +246,7 @@
                 setTimeout(function(){
                     var star_b = '%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg' 
                     document.getElementById('gold').innerText = userarr['班幣']['班幣']
+                    document.getElementById('week').innerText = 周
                     for (var index = 1; index < 2; index++) {
                         var user2 = userarr['第1周第'+String(index)+'堂']
                         document.getElementById('1-'+String(index)).innerText = user2['名稱']
@@ -276,9 +282,7 @@
         //firebase 功能
         function setdb(t輸入資料,coll,doc){ //寫入資料
             let db路徑 = db.collection(coll).doc(doc);
-            db路徑.set({
-                total: t輸入資料
-            }).then(() => {
+            db路徑.set(t輸入資料,{merge:true}).then(() => {
                 console.log('set data successful');
             });
         }
