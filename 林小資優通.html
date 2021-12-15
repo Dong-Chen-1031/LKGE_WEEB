@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- https://www.oxxostudio.tw/articles/201905/firebase-firestore.html -->
-<!-- https://dong-chen-1031.github.io/LKGE_WEEB/林口國小資優班.html -->
+<!-- https://dong-chen-1031.github.io/LKGE_WEEB/林小資優通.html -->
 <html>
 <head>
     <title>林小資優通</title>
@@ -93,7 +93,7 @@
                                       <br><img src="圖片/星-白.jpg" id="2-1-star-6">
                                       <br><img src="圖片/星-白.jpg" id="2-1-star-7">
                     </td>
-                    <td class="booktd"><textarea id="2-1" oninput='寫入_聯絡簿(this)'></textarea></td>
+                    <td class="booktd"><textarea id="2-1" oninput='寫入_聯絡簿(this)'>t&#13;&#10;ttt</textarea></td>
                     <td class="bookst">
                         準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-1">
                         班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-2">
@@ -250,7 +250,7 @@
                     for (var index = 1; index < 2; index++) {
                         var user2 = userarr['第1周第'+String(index)+'堂']
                         document.getElementById('1-'+String(index)).innerText = user2['名稱']
-                        document.getElementById('2-'+String(index)).innerText = user2['內容']
+                        document.getElementById('2-'+String(index)).value = user2['內容']
                         if(user2['教師簽章'] != null){
                             document.getElementById('3-1-div').style.display = 'block';
                             document.getElementById('3-1-name').innerText = user2['教師簽章'];
