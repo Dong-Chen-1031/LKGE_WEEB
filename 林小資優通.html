@@ -250,7 +250,7 @@
                     for (var index = 1; index < 2; index++) {
                         var user2 = userarr['第1周第'+String(index)+'堂']
                         document.getElementById('1-'+String(index)).innerText = user2['名稱']
-                        document.getElementById('2-'+String(index)).value = user2['內容']
+                        document.getElementById('2-'+String(index)).innerHTML = user2['內容']
                         if(user2['教師簽章'] != null){
                             document.getElementById('3-1-div').style.display = 'block';
                             document.getElementById('3-1-name').innerText = user2['教師簽章'];
