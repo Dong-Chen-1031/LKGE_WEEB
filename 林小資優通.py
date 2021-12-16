@@ -6,7 +6,7 @@ from firebase_admin import firestore
 
 # 引用私密金鑰
 # path/to/serviceAccount.json 請用自己存放的路徑
-cred = credentials.Certificate('dong-virus-firebase-adminsdk-iislp-cb5ebea9d3.json')
+cred = credentials.Certificate('lkge-web-firebase-adminsdk-2t4fb-1488fe4db5.json')
 
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
