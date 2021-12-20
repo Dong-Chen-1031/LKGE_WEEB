@@ -123,9 +123,9 @@
                     <td class="booktd"><textarea id="2-4" oninput='寫入_聯絡簿(this)'></textarea></td>
                     <td class="bookst">
                         準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-1" onclick="start(this)">
-                                    　<br><img src="圖片/星-白.jpg" id="2-5-star-3" onclick="start(this)">
-                                    　<br><img src="圖片/星-白.jpg" id="2-5-star-4" onclick="start(this)">
                         班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-2" onclick="start(this)">
+                                      <br><img src="圖片/星-白.jpg" id="2-5-star-3" onclick="start(this)">
+                                    　<br><img src="圖片/星-白.jpg" id="2-5-star-4" onclick="start(this)">
                         作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-5" onclick="start(this)">
                         　　　　　　　<br><img src="圖片/星-白.jpg" id="2-5-star-7" onclick="start(this)">
                                 　 　<br><img src="圖片/星-白.jpg" id="2-5-star-6" onclick="start(this)">
@@ -199,7 +199,7 @@
         var userarr = {}
         var llb = {}
         var week = 1
-        var b聯絡簿
+        var b聯絡簿 = {}
         //取得基本資料
         var ref = db.collection('目錄');
         ref.get().then(querySnapshot => {
@@ -225,7 +225,10 @@
             console.log(t輸入id)
         };
         function start(t){
-            console.log(b聯絡簿)
+            if (username!=undefined){
+                console.log(b聯絡簿)
+                console.log(t.id)
+            }
         };
 
         //登入
