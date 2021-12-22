@@ -124,11 +124,11 @@
                     <td class="bookst">
                         準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-1" onclick="start(this)">
                         班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-2" onclick="start(this)">
-                                      <br><img src="圖片/星-白.jpg" id="2-5-star-3" onclick="start(this)">
-                                    　<br><img src="圖片/星-白.jpg" id="2-5-star-4" onclick="start(this)">
+                                     <br><img src="圖片/星-白.jpg" id="2-5-star-3" onclick="start(this)">
+                                     <br><img src="圖片/星-白.jpg" id="2-5-star-4" onclick="start(this)">
                         作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-5" onclick="start(this)">
-                        　　　　　　　<br><img src="圖片/星-白.jpg" id="2-5-star-7" onclick="start(this)">
-                                　 　<br><img src="圖片/星-白.jpg" id="2-5-star-6" onclick="start(this)">
+                                      <br><img src="圖片/星-白.jpg" id="2-5-star-7" onclick="start(this)">
+                                      <br><img src="圖片/星-白.jpg" id="2-5-star-6" onclick="start(this)">
                     </td>
                     <td class="booktd"><textarea id="2-5" oninput='寫入_聯絡簿(this)'></textarea></td>
                 </tr>
@@ -227,8 +227,8 @@
         function start(t){
             if (username!=undefined){
                 console.log(b聯絡簿)
-                console.log(t.id)
-                tname = t.id.s
+                tname = t.id.split('-')
+                console.log(tname)
             }
         };
 
