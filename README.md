@@ -1,8 +1,7 @@
 # 林小資優通-林口國小資優班網頁系統
 
-<div align="center">
-  <img src="123.png">
-</div>
+![GITHUB]( 123.png "目前整體網頁")
+
 
 ## 連結
 [https://dong-chen-1031.github.io/LKGE_WEEB/林小資優通](https://dong-chen-1031.github.io/LKGE_WEEB/林小資優通)
