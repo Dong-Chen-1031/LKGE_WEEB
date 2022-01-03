@@ -8,14 +8,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
     <style>
         table{border-collapse: collapse;}
         .booktd{height: 20px;width: 16%;border: 2px solid #092846;}
         .bookt{font-size: 20px;color: #f5f5f5;}
         .booktable{margin-left: auto;margin-right: auto;width: 95%;}
-        .bookdiv{margin-left: auto;margin-right: auto;width: 100%;}
+        .聯絡簿div{margin-left: auto;margin-right: auto;width: 100%;}
         tr:nth-child(2){height: 300px;}
         tr:nth-child(1){text-align: center;font-size: 18px;}
         .huse{width: 10%; height: auto;font-size: 10px;background-color: #cf7c1d;margin: 5px;
@@ -50,11 +49,12 @@
     <base href="https://dong-chen-1031.github.io/LKGE_WEEB/">
 </head>
 <body>
+
     <div class="hdiv flex">
         <div class="flexitem himg"><img src="圖片/image-removebg-preview.png"></div>
         <div class="flexitem htext"><div class="center">林小資優通</div></div>
-        <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">電子聯絡簿</div></div>
-        <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">雲端筆記</div></div>
+        <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id='電子聯絡簿but'><div class="center">電子聯絡簿</div></div>
+        <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="雲端筆記but"><div class="center">雲端筆記</div></div>
         <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">班幣存摺</div></div>
         <div class="flexitem huse" style="cursor: not-allowed;"><div class="center">請假/加課</div></div>
         <div class="flexitem login">
@@ -65,9 +65,11 @@
             <img src="圖片/登入.png" onclick="Login()" class="loginimg">
         </div>
     </div>
+
+
     <div class="bodydiv">
         <!-- 聯絡簿 -->
-        <div class="bookdiv" id="book">
+        <div class="聯絡簿div" id="電子聯絡簿">
             <div class="bookmemus flex">
                 <div class="flexitem bookmemu booktdiv"><p class="bookt center">上一週</p></div>
                 <div class="flexitem bookmemu booktdiv"><p class="bookt center">儲存</p></div>
@@ -176,11 +178,11 @@
                 </tr>
             </table>
         </div>
-        <!-- 登入 -->
-        <div>
+        <!-- 筆記 -->
+        <div class="筆記div" id="雲端筆記">
+
         </div>
     </div>
-    <p id="javascript-01" style="display: none;"></p>
     <script>
         // 連線firebase
         var firebaseConfig = {
@@ -203,6 +205,7 @@
         var llb = {}
         var week = 1
         var b聯絡簿 = {}
+        var 分頁 = ["雲端筆記","電子聯絡簿"]
         //取得基本資料
         var ref = db.collection('目錄');
         ref.get().then(querySnapshot => {
@@ -210,6 +213,18 @@
                 目錄[doc.id] = doc.data()
             });
         });
+    </script>
+    <script>
+        function 翻頁(but){
+            butname=but.id.replace("but","");
+            console.log(butname)
+            for (let i = 0; i < 分頁.length; i++) {
+                const element = 分頁[i];
+                if (condition) {
+                    
+                }
+            }
+        };
     </script>
     <script>
         //寫入聯絡簿

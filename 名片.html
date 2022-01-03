@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>名片-陳柏東</title>
+    <base href="https://dong-chen-1031.github.io/LKGE/">
+    <meta property="og:url"           content="https://dong-chen-1031.github.io/LKGE_WEEB/%E5%90%8D%E7%89%87" />
+    <meta property="og:type"          content="名片-陳柏東" />
+    <meta property="og:title"         content="名片-陳柏東" />
+    <meta property="og:description"   content="名片-陳柏東" />
+    <meta property="og:image"         content="https://dong-chen-1031.github.io/LKGE/Dong_loge1.0_-_複製-removebg-preview.png" />
+    <style>
+        .hide{display: none;}
+        p{font-size: 22px;color: 666;}
+        a{font-size: 22px;color: 666;}
+        textarea{font-size: 15px;background-color: #ffecc4;height: 190px;}
+        .namecard{
+            width: 70%; height: 90%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 30px;
+            margin-top: 150px;
+            background-color: #ddeefe  ;
+            letter-spacing: 2px;      
+            overflow: hidden;
+            border-radius: 10px;
+            border: solid 2px rgba(0,0,0,0.15);
+        }
+        body{background-color: #ffecc4;}
+        .lkgeimg{height: 70px;width: 70px;}
+        .lkgetext{font-size: 35px;width: 300px;margin: 0px;}
+        .lkgediv{width: 500px;}
+        .flex {
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                /*修改以下值試試看 row | row-reverse | column | column-reverse;*/
+                flex-direction: row;
+                justify-content:center;
+                }
+        .flexitem {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            }
+        .hr1{height: 2px;border:none;color:#333;background-color:#333;width: 1000px;}
+        .name{text-align: center;font-size: 30px;margin: 0px;}
+        .dongimg{height: 70px;width: 70px;}
+        .namediv{width: auto;margin-left: auto;margin-right: auto;}
+        .dongdiv{width: 600px;height: 300px;margin-left: auto;margin-right: auto;}
+        .namea{vertical-align:super;font-size: 20px;}
+        a{text-decoration:none;color: #333;}
+        .tt{text-align: center;margin: 40px;}
+        .whydiv{width: 12%; height: 50px;font-size: 5px;
+            background-color: #ffffff;margin: 5px;cursor: pointer;border: #000000 1px solid;}
+        .whyopen{font-size: 17px;color: #333;}
+    </style>
+</head>
+<body>
+    <div class="namecard">
+        <div class="lkgediv flex">
+            <img src="資優班LOGO.png" class="lkgeimg item">
+            <p class="lkgetext flexitem">林口國小資優班</p>
+        </div>
+        <hr class="hr1"/>
+        <!-- <div style="height: 80px;width: 50px;"></div> -->
+        <div class="dongdiv">
+            <div class="flex namediv">
+                <p class="namea">學生：</p>
+                <img src="Dong_loge1.0_-_複製-removebg-preview.png" class=" item dongimg" id="img">
+                <p class="flexitem flexitem name" id="name">loding</p>
+            </div>
+            <p class="tt">地址：<span id="address">loding</span></p>
+            <a href='#' id="Emaila"><p class="tt">電子郵件:<span id="Email">loding</span></p></a>
+            <p class="tt">Line ID：<span id="phone">loding</span></p>
+        </div>
+        <div class="flex">
+            <div onclick="openwhy();" class="whydiv flexitem"><p class="whyopen" id="whytt">名片原理　▼</p></div>
+            <div class="whydiv flexitem"><a class="whyopen" href="mailto:dcdcdc1031@gmail.com">聯絡柏東　☎</a></div>
+        </div>
+        
+        <div id='why' class="hide">
+            <p>
+                本名片的內容抓取於一個json（<b>J</b>ava<b>S</b>cript <b>O</b>bject <b>N</b>otation：是一種資料儲存格式），當json檔案改變，本名片內容會更著改變，藉此達到快速客製化名片。(
+                <a href="https://dong-chen-1031.github.io/LKGE/%E5%90%8D%E7%89%87.json" target="_blank">
+                    https://dong-chen-1031.github.io/LKGE/名片.json
+                </a>)<br><br>json內容如下：
+            </p>
+            <textarea cols="100" rows="10" id="whyw" oninput="textwhy(this)"></textarea>
+            <p>ps.歡迎編輯上方json，並觀察本名片的改變，但格式需正確(「""」和「：」 勿刪除，只能變更「:」後方文字)<br><br>name = 名字<br>address = 地址<br>Email = 電子郵件<br>phone = Line ID<br>img = 圖片(暫時勿更動)</p>
+        </div>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+        <!-- Your share button code -->
+        <div class="fb-share-button" 
+        data-href="https://dong-chen-1031.github.io/LKGE_WEEB/%E5%90%8D%E7%89%87" 
+        data-layout="button_count">
+        </div>
+    </div>
+
+    <script>
+        function update (result){
+            result = JSON.parse(result);
+            var iten = ['address','name','phone','Email'];
+            var json = result[0];
+            for (let i = 0; i < iten.length; i++) {
+                eval('document.getElementById(iten[i]).innerText = json.'+iten[i]);
+            };
+            document.getElementById('Emaila').setAttribute('href','mailto:'+json.Email);
+            document.getElementById('img').setAttribute('src',json.img);
+        };
+        fetch("https://dong-chen-1031.github.io/LKGE/%E5%90%8D%E7%89%87.json").then(function(response){
+            return response.text();
+        }).then(function(re){
+            document.getElementById('whyw').value = re;
+            return re;
+        }).then(update)
+        function openwhy(){
+            why = document.getElementById('why')
+            why.classList.toggle('hide')
+            whyt = document.getElementById('whytt')
+            if (why.classList == 'hide'){
+                whyt.innerText = '名片原理　▼'
+            }else{
+                whyt.innerText = '名片原理　▲'
+            }
+        } 
+        function textwhy(text){
+            update(text.value);
+        };
+    </script> 
+</body>
+</html>
