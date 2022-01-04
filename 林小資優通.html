@@ -147,7 +147,7 @@
                 <td id="1-5" class="booktd" colspan="2">
                     <div class="flex">
                         <p class="TeMane flexitem">授課教師簽名</p>
-                        <div class="TeManes"  id="3-1-div"><small>教師</small> <span id="3-1-name">傅蓉</span></div>
+                        <div class="TeManes"  id="3-1-div"><small>教師</small> <span id="3-1-name"></span></div>
                     </div>
                 </td>
                 <td id="1-5" class="booktd" colspan="2">
@@ -251,7 +251,7 @@
 <script>
     //寫入聯絡簿
     function 寫入_聯絡簿(){
-        for (let i = 0; i < 5; i++) {
+        for (let i = 1; i < 6; i++) {
             var 輸入框 = document.getElementById('2-'+String(i))
             let t輸入資料 = '';
             let t輸入內容_已切 = 輸入框.value.split('\n');
@@ -321,7 +321,6 @@
                 }
                 
             },5000)
-            
         }).catch((error) => {
             console.log('111');
         })
