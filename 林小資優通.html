@@ -78,7 +78,7 @@
     <div class="bookdiv" id="電子聯絡簿">
         <div class="bookmemus flex">
             <div class="flexitem bookmemu booktdiv"><p class="bookt center">上一週</p></div>
-            <div class="flexitem bookmemu booktdiv"><p class="bookt center">儲存</p></div>
+            <div class="flexitem bookmemu booktdiv" onclick="寫入_聯絡簿()"><p class="bookt center">儲存</p></div>
             <div class="flexitem bookmemu booktdiv" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
             <div class="flexitem bookmemu booktdiv"><p class="bookt center">更新</p></div>
             <div class="flexitem bookmemu booktdiv"><p class="bookt center">下一週</p></div>
@@ -101,7 +101,7 @@
                                     <br><img src="圖片/星-白.jpg" id="2-1-star-6" onclick="start(this)">
                                     <br><img src="圖片/星-白.jpg" id="2-1-star-7" onclick="start(this)">
                 </td>
-                <td class="booktd"><textarea id="2-1" oninput='寫入_聯絡簿(this)'></textarea></td>
+                <td class="booktd"><textarea id="2-1"></textarea></td>
                 <td class="bookst">
                     準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-1" onclick="start(this)">
                     班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-2" onclick="start(this)">
@@ -111,7 +111,7 @@
                                     <br><img src="圖片/星-白.jpg" id="2-2-star-6" onclick="start(this)">
                                     <br><img src="圖片/星-白.jpg" id="2-2-star-7" onclick="start(this)">
                 </td>
-                <td class="booktd"><textarea id="2-2" oninput='寫入_聯絡簿(this)'></textarea></td>
+                <td class="booktd"><textarea id="2-2"></textarea></td>
                 <td class="bookst">
                     準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-1" onclick="start(this)">
                     班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-2" onclick="start(this)">
@@ -121,7 +121,7 @@
                                     <br><img src="圖片/星-白.jpg" id="2-3-star-6" onclick="start(this)">
                                     <br><img src="圖片/星-白.jpg" id="2-3-star-7" onclick="start(this)">
                 </td>
-                <td class="booktd"><textarea id="2-3" oninput='寫入_聯絡簿(this)'></textarea></td>
+                <td class="booktd"><textarea id="2-3"></textarea></td>
                 <td class="bookst">
                     準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-1" onclick="start(this)">
                     班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-2" onclick="start(this)">
@@ -131,7 +131,7 @@
                                     <br><img src="圖片/星-白.jpg" id="2-4-star-6" onclick="start(this)">
                                     <br><img src="圖片/星-白.jpg" id="2-4-star-7" onclick="start(this)">
                 </td>
-                <td class="booktd"><textarea id="2-4" oninput='寫入_聯絡簿(this)'></textarea></td>
+                <td class="booktd"><textarea id="2-4"></textarea></td>
                 <td class="bookst">
                     準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-1" onclick="start(this)">
                     班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-2" onclick="start(this)">
@@ -141,7 +141,7 @@
                                     <br><img src="圖片/星-白.jpg" id="2-5-star-7" onclick="start(this)">
                                     <br><img src="圖片/星-白.jpg" id="2-5-star-6" onclick="start(this)">
                 </td>
-                <td class="booktd"><textarea id="2-5" oninput='寫入_聯絡簿(this)'></textarea></td>
+                <td class="booktd"><textarea id="2-5"></textarea></td>
             </tr>
             <tr>
                 <td id="1-5" class="booktd" colspan="2">
@@ -250,19 +250,21 @@
 <!-- 龐大的主程式 -->
 <script>
     //寫入聯絡簿
-    function 寫入_聯絡簿(輸入框){
-        let t輸入資料 = '';
-        let t輸入內容_已切 = 輸入框.value.split('\n');
-        for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
-            let for資料 = t輸入內容_已切[次];
-            t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
+    function 寫入_聯絡簿(){
+        for (let i = 0; i < 5; i++) {
+            var 輸入框 = document.getElementById('2-'+String(i))
+            let t輸入資料 = '';
+            let t輸入內容_已切 = 輸入框.value.split('\n');
+            for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
+                let for資料 = t輸入內容_已切[次];
+                t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
+            }
+            let t輸入id = 輸入框.id.split('-')[1];
+            let t輸出資料 = {
+                內容:t輸入資料
+            }
+            setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')   
         }
-        let t輸入id = 輸入框.id.split('-')[1];
-        let t輸出資料 = {
-            內容:t輸入資料
-        }
-        setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')
-        console.log(t輸入id)
     };
     function start(t){
         if (username!=undefined){
