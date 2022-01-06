@@ -248,6 +248,7 @@
     };
 </script>
 
+
 <!-- 龐大的主程式 -->
 <script>
     //寫入聯絡簿
@@ -286,7 +287,22 @@
             username = 目錄['學生'][uid]; 
             console.log(username);
             document.getElementById('name').innerText = username;
-            db.collection(username).get().then(querySnapshot => {
+            updata()
+        }).catch((error) => {
+            console.log('111');
+        })
+    }
+
+    //firebase 功能
+    function setdb(t輸入資料,coll,doc){ //寫入資料
+        let db路徑 = db.collection(coll).doc(doc);
+        db路徑.set(t輸入資料,{merge:true}).then(() => {
+            console.log('set data successful');
+        });
+    }
+
+    function updata(){ //更新資料
+                db.collection(username).get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     userarr[doc.id] = doc.data();
                 });
@@ -322,17 +338,6 @@
                 }
                 
             },5000)
-        }).catch((error) => {
-            console.log('111');
-        })
-    }
-
-    //firebase 功能
-    function setdb(t輸入資料,coll,doc){ //寫入資料
-        let db路徑 = db.collection(coll).doc(doc);
-        db路徑.set(t輸入資料,{merge:true}).then(() => {
-            console.log('set data successful');
-        });
     }
 </script>
 
