@@ -81,7 +81,7 @@
             <div class="flexitem bookmemu booktdiv"><p class="bookt center">上一週</p></div>
             <div class="flexitem bookmemu booktdiv" onclick="寫入_聯絡簿()"><p class="bookt center">儲存</p></div>
             <div class="flexitem bookmemu booktdiv" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
-            <div class="flexitem bookmemu booktdiv"><p class="bookt center">更新</p></div>
+            <div class="flexitem bookmemu booktdiv"><p class="bookt center" onclick="updata()">更新</p></div>
             <div class="flexitem bookmemu booktdiv"><p class="bookt center">下一週</p></div>
         </div>
         <table class="booktable">
@@ -302,7 +302,9 @@
         });
     }
 
-    function updata(){ //更新資料
+
+    //更新資料
+    function updata(){ 
         db.collection(username).get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 userarr[doc.id] = doc.data();
@@ -340,6 +342,7 @@
             
         },5000)
     }
+
 </script>
 
 
