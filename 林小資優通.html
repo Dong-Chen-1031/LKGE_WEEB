@@ -215,12 +215,11 @@
 
     //設置變數
     var return1
-    var uid
-    var username 
-    var 目錄 = {}
-    var userarr = {}
-    var llb = {}
-    var week = 1
+    var uid //使用者id
+    var username //使用者名稱
+    var 目錄 = {} //快取目錄資料
+    var userarr = {} //使用者總資料
+    var week = 1 //周次
     var b聯絡簿 = {}
     var 分頁 = ["雲端筆記","電子聯絡簿","班幣存摺","請假/加課"]
 
@@ -268,6 +267,8 @@
             setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')   
         }
     };
+
+    //點擊星星
     function start(t){
         if (username!=undefined){
             console.log(b聯絡簿)
@@ -293,7 +294,7 @@
         })
     }
 
-    //firebase 功能
+    //功能
     function setdb(t輸入資料,coll,doc){ //寫入資料
         let db路徑 = db.collection(coll).doc(doc);
         db路徑.set(t輸入資料,{merge:true}).then(() => {
@@ -302,42 +303,42 @@
     }
 
     function updata(){ //更新資料
-                db.collection(username).get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    userarr[doc.id] = doc.data();
-                });
+        db.collection(username).get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                userarr[doc.id] = doc.data();
             });
-            setTimeout(function(){
-                var star_b = '%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg' 
-                document.getElementById('gold').innerText = userarr['班幣']['班幣']
-                document.getElementById('week').innerText = week
-                for (var index = 1; index < 6; index++) {
-                    var user2 = userarr['第1周第'+String(index)+'堂']
-                    b聯絡簿['第1周第'+String(index)+'堂'] = user2
-                    document.getElementById('1-'+String(index)).innerText = user2['名稱']
-                    document.getElementById('2-'+String(index)).innerHTML = user2['內容']
-                    if(user2['教師簽章'] != null){
-                        document.getElementById('3-1-div').style.display = 'block';
-                        document.getElementById('3-1-name').innerText = user2['教師簽章'];
+        });
+        setTimeout(function(){
+            var star_b = '%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg' 
+            document.getElementById('gold').innerText = userarr['班幣']['班幣']
+            document.getElementById('week').innerText = week
+            for (var index = 1; index < 6; index++) {
+                var user2 = userarr['第1周第'+String(index)+'堂']
+                b聯絡簿['第1周第'+String(index)+'堂'] = user2
+                document.getElementById('1-'+String(index)).innerText = user2['名稱']
+                document.getElementById('2-'+String(index)).innerHTML = user2['內容']
+                if(user2['教師簽章'] != null){
+                    document.getElementById('3-1-div').style.display = 'block';
+                    document.getElementById('3-1-name').innerText = user2['教師簽章'];
+                };
+                if (user2['準時'][0]){
+                    document.getElementById('2-1-star-1').src = star_b ;
+                }; 
+                for (var t = 0; t < user2['班規'].length; t++) {
+                    let if_star = user2['班規'][t];
+                    if (if_star){
+                        document.getElementById('2-1-star-'+String(2+t)).src = star_b ;
                     };
-                    if (user2['準時'][0]){
-                        document.getElementById('2-1-star-1').src = star_b ;
-                    }; 
-                    for (var t = 0; t < user2['班規'].length; t++) {
-                        let if_star = user2['班規'][t];
-                        if (if_star){
-                            document.getElementById('2-1-star-'+String(2+t)).src = star_b ;
-                        };
+                };
+                for (var t = 0; t < user2['作業'].length; t++) {
+                    let if_star = user2['作業'][t];
+                    if (if_star){
+                        document.getElementById('2-1-star-'+String(5+t)).src = star_b ;
                     };
-                    for (var t = 0; t < user2['作業'].length; t++) {
-                        let if_star = user2['作業'][t];
-                        if (if_star){
-                            document.getElementById('2-1-star-'+String(5+t)).src = star_b ;
-                        };
-                    };
-                }
-                
-            },5000)
+                };
+            }
+            
+        },5000)
     }
 </script>
 
