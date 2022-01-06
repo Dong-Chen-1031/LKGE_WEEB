@@ -304,14 +304,16 @@
 
 
     //更新資料
-    function updata(){ 
+    function updata(){
+        userarr = {}
         db.collection(username).get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 userarr[doc.id] = doc.data();
             });
         });
         setTimeout(function(){
-            var star_b = '%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg' 
+            var star_b = '星-黑.jpg' 
+            var star_y = '星-白.jpg'
             document.getElementById('gold').innerText = userarr['班幣']['班幣']
             document.getElementById('week').innerText = week
             for (var index = 1; index < 6; index++) {
@@ -325,17 +327,23 @@
                 };
                 if (user2['準時'][0]){
                     document.getElementById('2-1-star-1').src = star_b ;
-                }; 
+                }else{
+                        document.getElementById('2-1-star-'+String(2+t)).src = star_y;
+                };
                 for (var t = 0; t < user2['班規'].length; t++) {
                     let if_star = user2['班規'][t];
                     if (if_star){
-                        document.getElementById('2-1-star-'+String(2+t)).src = star_b ;
+                        document.getElementById('2-1-star-'+String(2+t)).src = star_b;
+                    }else{
+                        document.getElementById('2-1-star-'+String(2+t)).src = star_y;
                     };
                 };
                 for (var t = 0; t < user2['作業'].length; t++) {
                     let if_star = user2['作業'][t];
                     if (if_star){
                         document.getElementById('2-1-star-'+String(5+t)).src = star_b ;
+                    }else{
+                        document.getElementById('2-1-star-'+String(2+t)).src = star_y;
                     };
                 };
             }
