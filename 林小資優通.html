@@ -330,12 +330,12 @@
                 }else{
                     document.getElementById('2-'+String(index)+'-star-1').src = star_y;
                 };
-                for (var t = 0; t < user2['班規'].length; t++) {
+                for (var t = 2; t < 4; t++) {
                     let if_star = user2['班規'][t];
                     if (if_star){
-                        document.getElementById('2-'+String(index)+'-star-'+String(2+t)).src = star_b;
+                        document.getElementById('2-'+String(index)+'-star-'+t).src = star_b;
                     }else{
-                        document.getElementById('2-'+String(index)+'-star-'+String(2+t)).src = star_y;
+                        document.getElementById('2-'+String(index)+'-star-'+t).src = star_y;
                     };
                 };
                 for (var t = 0; t < user2['作業'].length; t++) {
@@ -343,7 +343,7 @@
                     if (if_star){
                         document.getElementById('2-'+String(index)+'-star-'+String(5+t)).src = star_b ;
                     }else{
-                        document.getElementById('2-'+String(index)+'-star-'+String(2+t)).src = star_y;
+                        document.getElementById('2-'+String(index)+'-star-'+String(5+t)).src = star_y;
                     };
                 };
             }
