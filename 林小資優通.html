@@ -322,28 +322,28 @@
                 document.getElementById('1-'+String(index)).innerText = user2['名稱']
                 document.getElementById('2-'+String(index)).innerHTML = user2['內容']
                 if(user2['教師簽章'] != null){
-                    document.getElementById('3-1-div').style.display = 'block';
-                    document.getElementById('3-1-name').innerText = user2['教師簽章'];
+                    document.getElementById('3-'+String(index)+'-div').style.display = 'block';
+                    document.getElementById('3-'+String(index)+'-name').innerText = user2['教師簽章'];
                 };
                 if (user2['準時'][0]){
-                    document.getElementById('2-1-star-1').src = star_b ;
+                    document.getElementById('2-'+String(index)+'-star-1').src = star_b ;
                 }else{
-                        document.getElementById('2-1-star-'+String(2+t)).src = star_y;
+                    document.getElementById('2-'+String(index)+'-star-1').src = star_y;
                 };
                 for (var t = 0; t < user2['班規'].length; t++) {
                     let if_star = user2['班規'][t];
                     if (if_star){
-                        document.getElementById('2-1-star-'+String(2+t)).src = star_b;
+                        document.getElementById('2-'+String(index)+'-star-'+String(2+t)).src = star_b;
                     }else{
-                        document.getElementById('2-1-star-'+String(2+t)).src = star_y;
+                        document.getElementById('2-'+String(index)+'-star-'+String(2+t)).src = star_y;
                     };
                 };
                 for (var t = 0; t < user2['作業'].length; t++) {
                     let if_star = user2['作業'][t];
                     if (if_star){
-                        document.getElementById('2-1-star-'+String(5+t)).src = star_b ;
+                        document.getElementById('2-'+String(index)+'-star-'+String(5+t)).src = star_b ;
                     }else{
-                        document.getElementById('2-1-star-'+String(2+t)).src = star_y;
+                        document.getElementById('2-'+String(index)+'-star-'+String(2+t)).src = star_y;
                     };
                 };
             }
