@@ -154,25 +154,25 @@
                 <td id="1-5" class="booktd" colspan="2">
                     <div class="flex">
                         <p class="TeMane flexitem">授課教師簽名</p>
-                        <div class="TeManes"  id="3-2-div"><small>教師</small> <span id="3-2-name">傅蓉</span></div>
+                        <div class="TeManes"  id="3-2-div"><small>教師</small> <span id="3-2-name"></span></div>
                     </div>
                 </td>
                 <td id="1-5" class="booktd" colspan="2">
                     <div class="flex">
                         <p class="TeMane flexitem">授課教師簽名</p>
-                        <div class="TeManes" id="3-3-div"><small>教師</small> <span id="3-3-name">傅蓉</span></div>
+                        <div class="TeManes" id="3-3-div"><small>教師</small> <span id="3-3-name"></span></div>
                     </div>
                 </td>
                 <td id="1-5" class="booktd" colspan="2">
                     <div class="flex">
                         <p class="TeMane flexitem">授課教師簽名</p>
-                        <div class="TeManes"  id="3-4-div"><small>教師</small> <span id="3-4-name">傅蓉</span></div>
+                        <div class="TeManes"  id="3-4-div"><small>教師</small> <span id="3-4-name"></span></div>
                     </div>
                 </td>
                 <td class="booktd" colspan="2">
                     <div class="flex">
                         <p class="TeMane flexitem">授課教師簽名</p>
-                        <div class="TeManes"  id="3-5-div"><small>教師</small> <span id="3-5-name">傅蓉</span></div>
+                        <div class="TeManes"  id="3-5-div"><small>教師</small> <span id="3-5-name"></span></div>
                     </div>
                 </td>
             </tr>
@@ -313,37 +313,40 @@
         });
         setTimeout(function(){
             var star_b = '圖片/星-黑.jpg' 
-            var star_y = '圖片/星-白.jpg'
+            var star_y = '圖片/星-白.jpg' 
             document.getElementById('gold').innerText = userarr['班幣']['班幣']
             document.getElementById('week').innerText = week
-            for (var index = 1; index < 6; index++) {
-                var user2 = userarr['第1周第'+String(index)+'堂']
-                b聯絡簿['第1周第'+String(index)+'堂'] = user2
-                document.getElementById('1-'+String(index)).innerText = user2['名稱']
-                document.getElementById('2-'+String(index)).innerHTML = user2['內容']
-                if(user2['教師簽章'] != null){
-                    document.getElementById('3-'+String(index)+'-div').style.display = 'block';
-                    document.getElementById('3-'+String(index)+'-name').innerText = user2['教師簽章'];
-                };
-                if (user2['準時'][0]){
-                    document.getElementById('2-'+String(index)+'-star-1').src = star_b ;
+            for (var ud_for_堂次 = 1; ud_for_堂次 < 6; ud_for_堂次++) {
+                var user2 = userarr['第'+String(week)+'周第'+String(ud_for_堂次)+'堂']
+                b聯絡簿['第'+String(week)+'周第'+String(ud_for_堂次)+'堂'] = user2
+                document.getElementById('1-'+String(ud_for_堂次)).innerText = user2['名稱']
+                document.getElementById('2-'+String(ud_for_堂次)).innerHTML = user2['內容']
+                if(user2['教師簽章'] = null){
+                    document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'none';
+                    document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = '';
                 }else{
-                    document.getElementById('2-'+String(index)+'-star-1').src = star_y;
+                    document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'block';
+                    document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = user2['教師簽章'];
+                }
+                if (user2['準時'][0]){
+                    document.getElementById('2-'+String(ud_for_堂次)+'-star-1').src = star_b ;
+                }else{
+                    document.getElementById('2-'+String(ud_for_堂次)+'-star-1').src = star_y;
                 };
                 for (var t = 2; t < 5; t++) {
-                    let if_star = user2['班規'][t];
+                    let if_star = user2['班規'][t-2];
                     if (if_star){
-                        document.getElementById('2-'+String(index)+'-star-'+t).src = star_b;
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_b;
                     }else{
-                        document.getElementById('2-'+String(index)+'-star-'+t).src = star_y;
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_y;
                     };
                 };
-                for (var t = 0; t < user2['作業'].length; t++) {
-                    let if_star = user2['作業'][t];
+                for (var t = 5; t < 8; t++) {
+                    let if_star = user2['作業'][t-5];
                     if (if_star){
-                        document.getElementById('2-'+String(index)+'-star-'+String(5+t)).src = star_b ;
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_b ;
                     }else{
-                        document.getElementById('2-'+String(index)+'-star-'+String(5+t)).src = star_y;
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_y;
                     };
                 };
             }
