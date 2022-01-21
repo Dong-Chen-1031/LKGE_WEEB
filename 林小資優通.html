@@ -254,15 +254,14 @@
     function 寫入_聯絡簿(){
         for (let i = 1; i < 6; i++) {
             var 輸入框 = document.getElementById('2-'+String(i))
-            let t輸入資料 = '';
-            let t輸入內容_已切 = 輸入框.value.split('\n');
-            for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
-                let for資料 = t輸入內容_已切[次];
-                t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'
-            }
+            // let t輸入內容_已切 = 輸入框.value;
+            // for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
+            //     let for資料 = t輸入內容_已切[次];
+            //     t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'.split('\n')
+            // }
             let t輸入id = 輸入框.id.split('-')[1];
             let t輸出資料 = {
-                內容:t輸入資料
+                內容:輸入框.value
             }
             setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')   
         }
@@ -305,6 +304,7 @@
 
     //更新資料
     function updata(){
+        console.log('正在更新')
         userarr = {}
         db.collection(username).get().then(querySnapshot => {
             querySnapshot.forEach(doc => {
@@ -352,6 +352,7 @@
             }
             
         },5000)
+        console.log('更新完成')
     }
 
 </script>
