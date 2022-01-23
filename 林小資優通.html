@@ -251,15 +251,19 @@
 <script>
     //寫入聯絡簿
     function 寫入_聯絡簿(){
-        var star_b = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg'  //黑
-        var star_y = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E7%99%BD.jpg'  //白
+        function dgs (x,y){
+            return document.getElementById('2-'+x+'-star-'+y).src=='https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg'
+        }
         if (username!=undefined){
         for (let i = 1; i < 6; i++) {
             var 輸入框 = document.getElementById('2-'+String(i))
             let t輸入id = 輸入框.id.split('-')[1];
             let t輸出資料 = {
                 內容:輸入框.value,
-                準時:[document.getElementById('2-'+i+'-star-1').src==star_b]
+                準時:[dgs(i,1)],
+                班規:[dgs(i,2),dgs(i,3),dgs(i,4)],
+                作業:[dgs(i,5),dgs(i,6),dgs(i,7)]
+
             }
             setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')   
         }
