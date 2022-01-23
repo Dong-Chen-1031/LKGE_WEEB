@@ -313,7 +313,8 @@
                 userarr[doc.id] = doc.data();
             });
         });
-        console.log('取得資料完畢：'+userarr)
+        console.log('取得資料完畢：')
+        console.log(userarr)
         setTimeout(function(){
             console.log('正在輸出資料')
             var star_b = '圖片/星-黑.jpg' 
@@ -322,7 +323,8 @@
             document.getElementById('week').innerText = week
             for (var ud_for_堂次 = 1; ud_for_堂次 < 6; ud_for_堂次++) {
                 var user2 = userarr['第'+String(week)+'周第'+String(ud_for_堂次)+'堂']
-                console.log('正在輸出第'+ud_for_堂次+'堂的資料：'+user2)
+                console.log('正在輸出第'+ud_for_堂次+'堂的資料：')
+                console.log(user2)
                 b聯絡簿['第'+String(week)+'周第'+String(ud_for_堂次)+'堂'] = user2
                 document.getElementById('1-'+String(ud_for_堂次)).innerText = user2['名稱']
                 document.getElementById('2-'+String(ud_for_堂次)).innerHTML = user2['內容']
