@@ -313,7 +313,9 @@
                 userarr[doc.id] = doc.data();
             });
         });
+        console.log('取得資料完畢：'+userarr)
         setTimeout(function(){
+            console.log('正在輸出資料')
             var star_b = '圖片/星-黑.jpg' 
             var star_y = '圖片/星-白.jpg' 
             document.getElementById('gold').innerText = userarr['班幣']['班幣']
@@ -327,7 +329,6 @@
                     document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'block';
                     document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = user2['教師簽章'];
                 }else{
-                    
                     document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'none';
                     document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = '';
                 }
