@@ -252,27 +252,29 @@
 <script>
     //寫入聯絡簿
     function 寫入_聯絡簿(){
+        if (username!=undefined){
         for (let i = 1; i < 6; i++) {
             var 輸入框 = document.getElementById('2-'+String(i))
-            // let t輸入內容_已切 = 輸入框.value;
-            // for (let 次 = 0; 次 < t輸入內容_已切.length; 次++) {
-            //     let for資料 = t輸入內容_已切[次];
-            //     t輸入資料 = t輸入資料 + for資料 + '&#13;&#10;'.split('\n')
-            // }
             let t輸入id = 輸入框.id.split('-')[1];
             let t輸出資料 = {
                 內容:輸入框.value
             }
             setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')   
         }
+        }
     };
 
     //點擊星星
     function start(t){
+        var star_b = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg'  //黑
+        var star_y = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E7%99%BD.jpg'  //白
+        console.log(t.src)
         if (username!=undefined){
-            console.log(b聯絡簿)
-            tname = t.id.split('-')
-            console.log(b聯絡簿['第'+week+'周'+'第'+tname[1]+'堂'])
+            if (t.src == star_y){
+                t.src = star_b
+            }else if(t.src == star_b){
+                t.src = star_y
+            }
         }
     };
 
@@ -321,12 +323,13 @@
                 b聯絡簿['第'+String(week)+'周第'+String(ud_for_堂次)+'堂'] = user2
                 document.getElementById('1-'+String(ud_for_堂次)).innerText = user2['名稱']
                 document.getElementById('2-'+String(ud_for_堂次)).innerHTML = user2['內容']
-                if(user2['教師簽章'] = null){
-                    document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'none';
-                    document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = '';
-                }else{
+                if(user2['教師簽章'] != null){
                     document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'block';
                     document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = user2['教師簽章'];
+                }else{
+                    
+                    document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'none';
+                    document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = '';
                 }
                 if (user2['準時'][0]){
                     document.getElementById('2-'+String(ud_for_堂次)+'-star-1').src = star_b ;
