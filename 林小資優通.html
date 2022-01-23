@@ -327,7 +327,7 @@
                 console.log(user2)
                 b聯絡簿['第'+String(week)+'周第'+String(ud_for_堂次)+'堂'] = user2
                 document.getElementById('1-'+String(ud_for_堂次)).innerText = user2['名稱']
-                document.getElementById('2-'+String(ud_for_堂次)).innerHTML = user2['內容']
+                document.getElementById('2-'+String(ud_for_堂次)).value = user2['內容']
                 if(user2['教師簽章'] != null){
                     document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'block';
                     document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = user2['教師簽章'];
