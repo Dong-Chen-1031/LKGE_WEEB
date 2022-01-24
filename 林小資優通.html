@@ -247,19 +247,21 @@
     };
 
     function 按鈕(pa) {
+        if (username != undefined) {
         if (if_bookbut) {
             for (let i = 1; i < 5; i++) {
                 document.getElementById('bookbut'+i).style.cursor = 'no-drop'
             }
             pa()
             if_bookbut = false
-        }
-        setTimeout(function(){
-            if_bookbut = true
-            for (let i = 1; i < 5; i++) {
-                document.getElementById('bookbut'+i).style.cursor = 'pointer'
+            setTimeout(function(){
+                if_bookbut = true
+                for (let i = 1; i < 5; i++) {
+                    document.getElementById('bookbut'+i).style.cursor = 'pointer'
             }
-        }, 2000);
+            }, 2000);
+        }   
+        }
     }
 </script>
 
