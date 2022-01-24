@@ -222,7 +222,7 @@
     var week = 1 //周次
     var b聯絡簿 = {}
     var 分頁 = ["雲端筆記","電子聯絡簿","班幣存摺","請假/加課"]
-    var if_bookbut = true
+    var if_bookbut = false
 
     //取得基本資料
     var ref = db.collection('目錄');
@@ -250,14 +250,16 @@
         if (username != undefined) {
         if (if_bookbut) {
             for (let i = 1; i < 5; i++) {
-                document.getElementById('bookbut'+i).style.cursor = 'wait'
+                document.getElementById('bookbut'+i).style.cursor = 'auto'
             }
+            document.getElementById('body').style.cursor = 'wait'
             pa()
             if_bookbut = false
             setTimeout(function(){
                 if_bookbut = true
                 for (let i = 1; i < 5; i++) {
                     document.getElementById('bookbut'+i).style.cursor = 'pointer'
+                document.getElementById('body').style.cursor = 'auto'
             }
             }, 2000);
         }   
@@ -383,6 +385,7 @@
                 };
             }
             console.log('更新完成')
+            if_bookbut = true
         },2000)
     }
 
