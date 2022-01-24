@@ -78,11 +78,11 @@
     <!-- 聯絡簿 -->
     <div class="bookdiv" id="電子聯絡簿">
         <div class="bookmemus flex">
-            <div class="flexitem bookmemu booktdiv"><p class="bookt center">上一週</p></div>
-            <div class="flexitem bookmemu booktdiv" onclick="寫入_聯絡簿()"><p class="bookt center">儲存</p></div>
-            <div class="flexitem bookmemu booktdiv" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
-            <div class="flexitem bookmemu booktdiv" onclick="updata()"><p class="bookt center">更新</p></div>
-            <div class="flexitem bookmemu booktdiv"><p class="bookt center">下一週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut1"><p class="bookt center">上一週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut2" onclick="寫入_聯絡簿()"  ><p class="bookt center">儲存</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut3" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut4" onclick="updata()"      ><p class="bookt center">更新</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut5"><p class="bookt center">下一週</p></div>
         </div>
         <table class="booktable">
             <tr>
@@ -222,6 +222,7 @@
     var week = 1 //周次
     var b聯絡簿 = {}
     var 分頁 = ["雲端筆記","電子聯絡簿","班幣存摺","請假/加課"]
+    var if_bookbut = true
 
     //取得基本資料
     var ref = db.collection('目錄');
@@ -244,6 +245,16 @@
         }
         document.getElementById(butname).style = 'display: block;'
     };
+
+    function 按鈕(pa) {
+        if (if_bookbut) {
+            for (let i = 1; i < 6; i++) {
+                document.getElementById('bookbut'+i).style.cursor = 'no-drop'
+            }
+            pa()
+            if_bookbut = false
+        }
+    }
 </script>
 
 
