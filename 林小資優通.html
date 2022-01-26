@@ -21,6 +21,7 @@
     
     <!-- 聯絡簿style -->
     <style>
+        textarea {resize:none;}
         table{border-collapse: collapse;}
         .booktd{height: 20px;width: 16%;border: 2px solid #092846;}
         .bookt{font-size: 20px;color: #f5f5f5;}
@@ -60,19 +61,20 @@
 
     <!-- 筆記style -->
     <style>
-        .cd{margin-left: auto;margin-right: auto;width: 80%;}
-        .cddiv{margin: 30px;border: #092846 solid 1px;width: 300px;display: inline-block;border-radius: 8px;height: 300px;cursor: pointer;}
+        .cd{margin-left: auto;margin-right: auto;width: 80%;display: flex;flex-wrap:wrap;}
+        .cddiv{margin: 30px;border: #092846 solid 1px;width: 300px;border-radius: 8px;height: 300px;cursor: pointer;}
         .cdtitle{height: 100%;width: 100%;}
         .cdte{width: 100%;height: 100%;}
         .cdtediv{margin-left: auto;margin-right: auto;width: 80%;}
-        .cdnamediv{font-size: 17px;margin-top: 10px;text-align:left;margin-left: 20px;margin-bottom: 5px;}
+        .cdnamediv{font-size: 18px;margin-top: 10px;text-align:left;margin-left: 20px;margin-bottom: 5px;}
         .cdhr{margin-top: 0px;}
+        .cd_inp_name{height: 100%;width: 100%;border-width: 0px;font-size: 20px;}
+        .modal-title{height: 100%;width: 100%;}
+        .cd_inp_text{width: 100%;height: 100%;overflow-y: hidden;border-width: 0px;}
+        .modal-body{height: auto;width: 100%;margin-left: auto;margin-right: auto;}
     </style>
 </head>
-
-
 <body id="body">
-
 
 <!-- 上方工具欄 -->
 <div class="hdiv flex">
@@ -209,13 +211,34 @@
     <!-- 筆記 -->
     <div class="bookdiv" id="雲端筆記">
         <div class="cd">
-            <div class='cddiv'>
-                <p class="cdnamediv"><span style="color: #065fd4;">#自拍電影 </span>課堂筆記</p>
+            <div class='cddiv' onclick="$('#ooo').modal('show');">
+                <div style="color: #065fd4;font-size: 30px;">+</div>
+                <!-- <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#自拍電影 </span>課堂筆記</p>
+                <hr class="cdhr">
+                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p> -->
+            </div>
+            <div class='cddiv' onclick="$('#ooo').modal('show');">
+                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#自拍電影 </span>課堂筆記</p>
                 <hr class="cdhr">
                 <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
             </div>
-            <div class='cddiv'>
-                <p class="cdnamediv"><span style="color: #065fd4;">網頁設計 </span>課堂筆記</p>
+            <div class='cddiv' onclick="$('#ooo').modal('show');">
+                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
+                <hr class="cdhr">
+                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
+            </div>
+            <div class='cddiv' onclick="$('#ooo').modal('show');">
+                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
+                <hr class="cdhr">
+                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
+            </div>
+            <div class='cddiv' onclick="$('#ooo').modal('show');">
+                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
+                <hr class="cdhr">
+                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
+            </div>
+            <div class='cddiv' onclick="$('#ooo').modal('show');">
+                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
                 <hr class="cdhr">
                 <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
             </div>
@@ -434,10 +457,29 @@
 </script>
 
 <!-- bootstrap js -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+<!-- Modal -->
+<div class="modal fade" id="ooo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title" id="exampleModalLongTitle"><input type="text" value="#自拍電影 課堂筆記" class="cd_inp_name"></div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea name="textarea" class="cd_inp_text" oninput='this.style.height = this.scrollHeight + "px";' placeholder="空白筆記" ></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+        <button type="button" class="btn btn-primary">儲存</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
