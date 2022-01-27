@@ -32,8 +32,8 @@
         .huse{width: 10%; height: auto;font-size: 10px;background-color: #cf7c1d;margin: 5px;
             font-size: 20px;color: #f5f5f5}
         .hdiv{width: 90%;margin-left: auto;margin-right: auto;}
-        .bodydiv{background-color: #f5f5f5;width: 90%;height: 90%;margin-left: auto;margin-top: 10px
-            ;margin-right: auto;}
+        .bodydiv{background-color: #f5f5f5;width: 90%;height: auto;margin-left: auto;margin-top: 10px
+            ;margin-right: auto;min-height: 85%;}
         .login{margin-left: auto;width: 20%;background-color: #cf7c1d;}
         .center{text-align: center;margin-left: auto;margin-right: auto;margin-top: auto;margin-bottom: auto;}
         .goldimg{width: 20px;height: 20px;margin-top: auto;margin-bottom: auto;}
@@ -72,6 +72,8 @@
         .modal-title{height: 100%;width: 100%;}
         .cd_inp_text{width: 100%;height: 100%;overflow-y: hidden;border-width: 0px;}
         .modal-body{height: auto;width: 100%;margin-left: auto;margin-right: auto;}
+        .cd_add_add{color: #065fd4;font-size: 60px;text-align: center;margin-top: 25%;}
+        .cd_add_text{text-align: center;font-size: 15px;color: #065fd4;}
     </style>
 </head>
 <body id="body">
@@ -211,33 +213,16 @@
     <!-- 筆記 -->
     <div class="bookdiv" id="雲端筆記">
         <div class="cd">
-            <div class='cddiv' onclick="$('#ooo').modal('show');">
-                <div style="color: #065fd4;font-size: 30px;">+</div>
-                <!-- <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#自拍電影 </span>課堂筆記</p>
-                <hr class="cdhr">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p> -->
+            <div class='cddiv' onclick="$('#mo02-筆記新增').modal('show');">
+                <div class="cd_add_add">+</div>
+                <p class="cd_add_text">新增筆記</p>
             </div>
-            <div class='cddiv' onclick="$('#ooo').modal('show');">
+            <div class='cddiv' onclick="$('#mo01-筆記顯示').modal('show');">
                 <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#自拍電影 </span>課堂筆記</p>
                 <hr class="cdhr">
                 <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
             </div>
-            <div class='cddiv' onclick="$('#ooo').modal('show');">
-                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
-                <hr class="cdhr">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
-            </div>
-            <div class='cddiv' onclick="$('#ooo').modal('show');">
-                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
-                <hr class="cdhr">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
-            </div>
-            <div class='cddiv' onclick="$('#ooo').modal('show');">
-                <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
-                <hr class="cdhr">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
-            </div>
-            <div class='cddiv' onclick="$('#ooo').modal('show');">
+            <div class='cddiv' onclick="$('#mo01-筆記顯示').modal('show');">
                 <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
                 <hr class="cdhr">
                 <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
@@ -462,7 +447,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 <!-- Modal -->
-<div class="modal fade" id="ooo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div name='modal'>
+
+<!-- mo01-筆記顯示 -->
+<div class="modal fade" id="mo01-筆記顯示" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -481,5 +469,41 @@
   </div>
 </div>
 
+
+<!-- mo02-筆記新增 -->
+<div class="modal fade" id="mo02-筆記新增" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="exampleModalLongTitle">筆記新增</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">筆記標籤</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+        <button type="button" class="btn btn-primary">儲存</button>
+      </div>
+</div>
+</div>
+
+
+</div>
 </body>
 </html>
