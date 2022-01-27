@@ -11,9 +11,6 @@
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
     <base href="https://dong-chen-1031.github.io/LKGE_WEEB/">
     <link rel="icon" href="https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/image-removebg-preview.png" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -220,12 +217,12 @@
             <div class='cddiv' onclick="$('#mo01-筆記顯示').modal('show');">
                 <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#自拍電影 </span>課堂筆記</p>
                 <hr class="cdhr">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
+                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
             </div>
             <div class='cddiv' onclick="$('#mo01-筆記顯示').modal('show');">
                 <p class="cdnamediv" id="cd_but_1"><span style="color: #065fd4;">#網頁設計 </span>課堂筆記</p>
                 <hr class="cdhr">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白記事</p>
+                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
             </div>
         </div>
     </div>
@@ -454,7 +451,23 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <div class="modal-title" id="exampleModalLongTitle"><input type="text" value="#自拍電影 課堂筆記" class="cd_inp_name"></div>
+        <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">自拍電影</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">自拍電影</a>
+                            <a class="dropdown-item" href="#">Minecraft</a>
+                            <a class="dropdown-item" href="#">網頁設計</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">詩婷老師</a>
+                            <a class="dropdown-item" href="#">貞伊老師</a>
+                            <a class="dropdown-item" href="#">傅蓉老師</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">其他筆記</a>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="筆記名稱" value="課堂筆記">
+                </div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         </button>
       </div>
@@ -484,26 +497,29 @@
                     <div class="input-group-prepend">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">筆記標籤</button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class="dropdown-item" href="#">自拍電影</a>
+                            <a class="dropdown-item" href="#">Minecraft</a>
+                            <a class="dropdown-item" href="#">網頁設計</a>
                             <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                            <a class="dropdown-item" href="#">詩婷老師</a>
+                            <a class="dropdown-item" href="#">貞伊老師</a>
+                            <a class="dropdown-item" href="#">傅蓉老師</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">其他筆記</a>
                         </div>
                     </div>
-                    <input type="text" class="form-control" aria-label="Text input with dropdown button">
+                    <input type="text" class="form-control" placeholder="筆記名稱">
                 </div>
+                <textarea name="textarea" class="cd_inp_text" oninput='this.style.height = this.scrollHeight + "px";' placeholder="筆記內容" ></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                <button type="button" class="btn btn-primary">儲存</button>
             </div>
         </div>
     </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
-        <button type="button" class="btn btn-primary">儲存</button>
-      </div>
 </div>
 </div>
 
-
-</div>
 </body>
 </html>
