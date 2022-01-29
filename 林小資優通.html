@@ -27,11 +27,11 @@
         tr:nth-child(2){height: 300px;}
         tr:nth-child(1){text-align: center;font-size: 18px;}
         .huse{width: 10%; height: auto;font-size: 10px;background-color: #cf7c1d;margin: 5px;
-            font-size: 20px;color: #f5f5f5}
+            font-size: 20px;color: #f5f5f5;border-radius: 3px;}
         .hdiv{width: 90%;margin-left: auto;margin-right: auto;}
         .bodydiv{background-color: #f5f5f5;width: 90%;height: auto;margin-left: auto;margin-top: 10px
             ;margin-right: auto;min-height: 85%;}
-        .login{margin-left: auto;width: 20%;background-color: #cf7c1d;}
+        .login{margin-left: auto;width: 20%;background-color: #cf7c1d;border-radius: 3px;}
         .center{text-align: center;margin-left: auto;margin-right: auto;margin-top: auto;margin-bottom: auto;}
         .goldimg{width: 20px;height: 20px;margin-top: auto;margin-bottom: auto;}
         .loginimg{width: 35px;height: 30px;margin-top: auto;margin-bottom: auto; cursor: pointer;}
@@ -71,6 +71,11 @@
         .modal-body{height: auto;width: 100%;margin-left: auto;margin-right: auto;}
         .cd_add_add{color: #065fd4;font-size: 60px;text-align: center;margin-top: 25%;}
         .cd_add_text{text-align: center;font-size: 15px;color: #065fd4;}
+    </style>
+
+    <!-- 加課style -->
+    <style>
+        .add_inp_text{width: 100%;height: 100%;overflow-y: hidden;margin-top: 10px;border-radius: 5px;}
     </style>
 </head>
 <body id="body">
@@ -209,65 +214,118 @@
 
     <!-- 筆記 -->
     <div class="bookdiv" id="雲端筆記">
-    <div class="cd">
-        <div class='cddiv' onclick="$('#mo02-筆記新增').modal('show');">
-            <div class="cd_add_add">+</div>
-            <p class="cd_add_text">新增筆記</p>
-        </div>
+        <div class="cd">
+            <div class='cddiv' onclick="$('#mo02-筆記新增').modal('show');">
+                <div class="cd_add_add">+</div>
+                <p class="cd_add_text">新增筆記</p>
+            </div>
 
-        <!-- 一個筆記 -->
-        <div class='cddiv'> 
-            <div class="cdnamediv d-flex justify-content-start" id="cd_but_1"><div style="color: #065fd4;">#自拍電影</div>　<div class="flex-grow-1">課堂筆記</div>
-                <div>
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
-                        aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">編輯</a>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">提交</a>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">刪除</a>
+            <!-- 一個筆記 -->
+            <div class='cddiv'> 
+                <div class="cdnamediv d-flex justify-content-start" id="cd_but_1"><div style="color: #065fd4;">#自拍電影</div>　<div class="flex-grow-1">課堂筆記</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">提交</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <hr class="cdhr">
+                <div onclick="$('#mo01-筆記顯示').modal('show');" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
+                </div>
             </div>
-            <hr class="cdhr">
-            <div onclick="$('#mo01-筆記顯示').modal('show');" style="width:100%;height:75%;">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
-            </div>
-        </div>
 
-        <!-- 一個筆記 -->
-        <div class='cddiv'>
-            <div class="cdnamediv d-flex justify-content-start" id="cd_but_1"><div style="color: #065fd4;">#自拍電影</div>　<div class="flex-grow-1">課堂筆記</div>
-                <div>
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
-                        aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">編輯</a>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">提交</a>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">刪除</a>
+            <!-- 一個筆記 -->
+            <div class='cddiv'>
+                <div class="cdnamediv d-flex justify-content-start" id="cd_but_1"><div style="color: #065fd4;">#自拍電影</div>　<div class="flex-grow-1">課堂筆記</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">提交</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="cdhr">
-            <div onclick="$('#mo01-筆記顯示').modal('show');" style="width:100%;height:75%;">
-                <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
+                <hr class="cdhr">
+                <div onclick="$('#mo01-筆記顯示').modal('show');" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- 班幣存摺 -->
-    <div class="bookdiv" id="班幣存摺">班幣存摺</div>
+    <div class="bookdiv" id="班幣存摺"></div>
 
     <!-- 請假/加課  -->
-    <div class="bookdiv" id="請假/加課">請假/加課</div>
+    <div class="bookdiv" id="請假/加課">
+        <div class="cd">
+            <div class='cddiv' onclick="$('#mo03-加課新增').modal('show');">
+                <div class="cd_add_add">+</div>
+                <p class="cd_add_text">加課新增</p>
+            </div>
+
+            <!-- 一個筆記 -->
+            <div class='cddiv'> 
+                <div class="cdnamediv d-flex justify-content-start" id="cd_but_1"><div style="color: #065fd4;">#自拍電影</div>　<div class="flex-grow-1">課堂筆記</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">提交</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cdhr">
+                <div onclick="$('#mo01-筆記顯示').modal('show');" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
+                </div>
+            </div>
+
+            <!-- 一個筆記 -->
+            <div class='cddiv'>
+                <div class="cdnamediv d-flex justify-content-start" id="cd_but_1"><div style="color: #065fd4;">#自拍電影</div>　<div class="flex-grow-1">課堂筆記</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">提交</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cdhr">
+                <div onclick="$('#mo01-筆記顯示').modal('show');" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;">空白筆記</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
@@ -549,12 +607,37 @@
                 <textarea name="textarea" class="cd_inp_text" oninput='this.style.height = this.scrollHeight + "px";' placeholder="筆記內容" ></textarea>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
                 <button type="button" class="btn btn-primary">儲存</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
             </div>
         </div>
     </div>
 </div>
+
+<!-- mo03-加課新增 -->
+<div class="modal fade" id="mo03-加課新增" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="exampleModalLongTitle">加課新增</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="from-group">
+                    <label for="date">日期：</label>
+                    <input type="date" name="data" id="">
+                </div>
+                <textarea name="wtext" class="add_inp_text" oninput='this.style.height = this.scrollHeight + "px";' placeholder="加課原因"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">送出</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </div>
 
