@@ -561,9 +561,10 @@
 
     //更新筆記
     function updata_cd(){
-        for (const key in cd_list) {
-            const element = cd_list[key];
-            console.log(element)
+        for (let i = 1; i < 6 ;i++) {
+            if (userarr.hasOwnProperty('第'+week+'週筆記'+i)) {
+                document.getElementById('cd_'+i).style.display='block'
+            }
         }
     }
 </script>
