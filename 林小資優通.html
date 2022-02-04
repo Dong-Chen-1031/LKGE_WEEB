@@ -225,7 +225,7 @@
 
             <!-- 1號筆記 -->
             <div class='cddiv' id="cd_1" style="display: none;"> 
-                <div class="cdnamediv d-flex justify-content-start" id="cd_but_1"><div style="color: #065fd4;">#自拍電影</div>　<div class="flex-grow-1">課堂筆記</div>
+                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_1">#自拍電影</div>　<div class="flex-grow-1" id="cd_name_1">課堂筆記</div>
                     <div>
                         <div class="input-group-prepend">
                             <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
@@ -383,7 +383,6 @@
     var b聯絡簿 = {}
     var 分頁 = ["雲端筆記","電子聯絡簿","班幣存摺","請假/加課"]
     var if_bookbut = false
-    var cd_list = {'1-1':{},'1-2':{}}
 
     //取得基本資料
     var ref = db.collection('目錄');
@@ -563,7 +562,10 @@
     function updata_cd(){
         for (let i = 1; i < 6 ;i++) {
             if (userarr.hasOwnProperty('第'+week+'週筆記'+i)) {
-                document.getElementById('cd_'+i).style.display='block'
+                var user2 = userarr['第'+week+'週筆記'+i]
+                console.log(user2)
+                document.getElementById('cd_'+i).style.display = 'block'
+                document.getElementById('cd_tag'+i).innerText =  user2['標籤']
             }
         }
     }
