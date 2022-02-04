@@ -561,8 +561,8 @@
     //更新筆記
     function updata_cd(){
         for (let i = 1; i < 6 ;i++) {
-            if (userarr.hasOwnProperty('第'+week+'週筆記'+i)) {
-                var user2 = userarr['第'+week+'週筆記'+i]
+            if (userarr.hasOwnProperty('第'+week+'周筆記'+i)) {
+                var user2 = userarr['第'+week+'周筆記'+i]
                 console.log(user2)
                 document.getElementById('cd_'+i).style.display = 'block'
                 document.getElementById('cd_tag_'+i).innerText =  '#'+user2['標籤']
