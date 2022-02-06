@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+</head>
+<body>
+    <script>
+        firebase.initializeApp({
+            projectId: 'test-school-d70c2'
+        });
+        var db = firebase.firestore();
+        var ref = db.collection('lkge').doc('st');
+        ref.set({  
+            total: 500,
+            d: 'test',
+            sale: 330
+        }).then(() => {
+            console.log('set data successful');
+        });
+    </script>
+</body>
+</html>
