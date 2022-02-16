@@ -562,6 +562,7 @@
 
     //更新筆記
     function updata_cd(){
+        console.log('開始更新筆記')
         for (let i = 1; i < 6 ;i++) {
             if (userarr.hasOwnProperty('第'+week+'周筆記'+i)) {
                 var user2 = userarr['第'+week+'周筆記'+i]
@@ -574,6 +575,7 @@
                 document.getElementById('cd_text_'+i).innerText =  user2['內容'].substr(0,100)
             }
         }
+        console.log('筆記更新完成')
     }
 
     //編輯筆記
