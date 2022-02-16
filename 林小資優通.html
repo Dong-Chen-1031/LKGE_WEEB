@@ -480,8 +480,8 @@
             console.log('登入成功，登入訊息：')
             console.log(result)
             updata_book()
-            updata_cd()
             setTimeout(() => {
+                updata_cd()
                 if_bookbut = true
                 for (let i = 1; i < 5; i++) {
                     document.getElementById('bookbut'+i).style.cursor = 'pointer'
@@ -565,6 +565,7 @@
         console.log('開始更新筆記')
         for (let i = 1; i < 6 ;i++) {
             if (userarr.hasOwnProperty('第'+week+'周筆記'+i)) {
+                console.log('找到'+'第'+week+'周筆記'+i)
                 var user2 = userarr['第'+week+'周筆記'+i]
                 console.log(user2)
                 document.getElementById('cd_'+i).style.display = 'block'
