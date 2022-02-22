@@ -574,7 +574,7 @@
         document.getElementById('cd_ed_tag').innerText = user2['標籤']
         document.getElementById('cd_ed_name').value = user2['名稱']
         document.getElementById('cd_ed_text').value = user2['內容']
-        document.getElementById('save_cd_but').onclick = 'cd_save'+n
+        document.getElementById('save_cd_but').onclick = function(event) { cd_save(n) };
         $('#mo01-筆記顯示').modal('show');
     }
 
