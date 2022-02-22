@@ -20,6 +20,7 @@
     <!-- 聯絡簿style -->
     <style>
         textarea {resize:none;}
+        .book_name>.booktd{color: green;}
         table{border-collapse: collapse;}
         .booktd{height: 20px;width: 16%;border: 2px solid #092846;}
         .bookt{font-size: 20px;color: #f5f5f5;}
@@ -45,7 +46,7 @@
         .flexitem {display: flex;}
         .himg{height: 70px;}
         .booktd>textarea{font-family:sans-serif;width:90%;height: 90%;background-color: #f5f5f5;
-            text-align: center;font-size: 18px;margin-left: auto;margin-right: auto;border: 0px;}
+            text-align: center;font-size: 18px;margin-left: auto;margin-right: auto;border: 0px;color: blue;}
         .bookst{width: 3%;border: 2px solid #092846;text-align: center;}
         .bookst>img{height: 30px;cursor: pointer;}
         .bookmemus{width: 90%;height: 5%;justify-content:center;padding-top: 10px;padding-bottom: 10px;}
@@ -59,7 +60,7 @@
 
     <!-- 筆記style -->
     <style>
-        .cd{margin-left: auto;margin-right: auto;width: 80%;display: flex;flex-wrap:wrap;}
+        .cd{margin-left: auto;margin-right: auto;width: 1100;display: flex;flex-wrap:wrap;}
         .cddiv{margin: 30px;border: #092846 solid 1px;width: 300px;border-radius: 8px;height: 300px;cursor: pointer;}
         .cdtitle{height: 100%;width: 100%;}
         .cdte{width: 100%;height: 100%;}
@@ -113,8 +114,8 @@
             <div class="flexitem bookmemu booktdiv" id="bookbut4"><p class="bookt center">下一週</p></div>
         </div>
         <table class="booktable">
-            <tr>
-                <td id="1-1" class="booktd" colspan="2"></td>
+            <tr class="book_name">
+                <td id="1-1" class="booktd" colspan="2">test</td>
                 <td id="1-2" class="booktd" colspan="2"></td>
                 <td id="1-3" class="booktd" colspan="2"></td>
                 <td id="1-4" class="booktd" colspan="2"></td>
@@ -216,6 +217,14 @@
 
     <!-- 筆記 -->
     <div class="bookdiv" id="雲端筆記">
+        <div class="bookmemus flex">
+            <div class="flexitem bookmemu booktdiv" id="bookbut1"><p class="bookt center">上一週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut2" onclick="按鈕(寫入_聯絡簿)"  ><p class="bookt center">儲存</p></div>
+            <div class="flexitem bookmemu booktdiv" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut3" onclick="按鈕(updata_book)"><p class="bookt center">更新</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut4"><p class="bookt center">下一週</p></div>
+        </div>
+
         <div class="cd">
 
             <!-- 筆記新增 -->
