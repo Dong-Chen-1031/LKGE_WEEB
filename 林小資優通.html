@@ -492,7 +492,6 @@
         });
     }
 
-
     //更新資料
     function updata_book(){
         console.log('正在更新')
@@ -582,6 +581,12 @@
     //儲存筆記
     function cd_save(n) {
         alert('儲存第'+week+'周筆記'+n)
+        let t輸出資料 = {
+                內容:document.getElementById('cd_ed_text').value,
+                名稱:document.getElementById('cd_ed_name').value,
+                標籤:document.getElementById('cd_ed_tag').innerText
+        }
+        setdb(t輸出資料,username,'第'+week+'周筆記'+n)   
     }
 </script>
 
