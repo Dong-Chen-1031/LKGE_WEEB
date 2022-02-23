@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!-- https://www.oxxostudio.tw/articles/201905/firebase-firestore.html -->
+<!-- https://dong-chen-1031.github.io/LKGE_WEEB/林小資優通.html -->
+<!-- http://192.168.0.200:1031/LKGE_WEEB/林小資優通.html -->
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>林小資優通-教師版</title>
+    <meta charset="utf-8">
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-auth.js"></script>
+    <base href="https://dong-chen-1031.github.io/LKGE_WEEB/">
+    <link rel="icon" href="https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/image-removebg-preview.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!-- 聯絡簿style -->
+    <style>
+        textarea {resize:none;}
+        .book_name>.booktd{color: green;}
+        table{border-collapse: collapse;}
+        .booktd{height: 20px;width: 16%;border: 2px solid #092846;}
+        .bookt{font-size: 20px;color: #f5f5f5;}
+        .booktable{margin-left: auto;margin-right: auto;width: 95%;}
+        .bookdiv{margin-left: auto;margin-right: auto;width: 100%;display: none;}
+        tr:nth-child(2){height: 300px;}
+        tr:nth-child(1){text-align: center;font-size: 18px;}
+        .huse{width: 10%; height: auto;font-size: 10px;background-color: #cf7c1d;margin: 5px;
+            font-size: 20px;color: #f5f5f5;border-radius: 3px;}
+        .hdiv{width: 90%;margin-left: auto;margin-right: auto;}
+        .bodydiv{background-color: #f5f5f5;width: 90%;height: auto;margin-left: auto;margin-top: 10px
+            ;margin-right: auto;min-height: 85%;}
+        .login{margin-left: auto;width: 20%;background-color: #cf7c1d;border-radius: 3px;}
+        .center{text-align: center;margin-left: auto;margin-right: auto;margin-top: auto;margin-bottom: auto;}
+        .goldimg{width: 20px;height: 20px;margin-top: auto;margin-bottom: auto;}
+        .loginimg{width: 35px;height: 30px;margin-top: auto;margin-bottom: auto; cursor: pointer;}
+        .xhr{height: 30%;margin-top: auto;margin-bottom: auto;background-color: #f5f5f5;border: 0px;}
+        .logintext{color: #f5f5f5;font-size: 20px;}
+        body{height: 100%;background-color: #092846;}
+        html{height: 100%;}
+        .flex {margin-left: auto;margin-right: auto;
+            display: flex;flex-direction: row;justify-content:flex-start;}
+        .flexitem {display: flex;}
+        .himg{height: 70px;}
+        .booktd>textarea{font-family:sans-serif;width:90%;height: 90%;background-color: #f5f5f5;
+            text-align: center;font-size: 18px;margin-left: auto;margin-right: auto;border: 0px;color: blue;}
+        .bookst{width: 3%;border: 2px solid #092846;text-align: center;}
+        .bookst>img{height: 30px;cursor: pointer;}
+        .bookmemus{width: 90%;height: 5%;justify-content:center;padding-top: 10px;padding-bottom: 10px;}
+        .booktdiv{border-radius: 10px;background-color: #388ce1;width:8%;cursor: no-drop;}
+        .bookmemu{margin-left: 10px;margin-right: 10px;}
+        .TeMane{font-size: 2px;margin-bottom: 20px;}
+        .htext{width: 22%; height: auto;font-size: 10px;margin: 5px;
+            font-size: 30px;color: #f5f5f5}
+        .TeManes{margin-top: 10px;margin-left: 15px;font-size: 20px;margin-bottom: 5px;border: 1px red solid;color: red;display: none;}
+    </style>
+
+    <!-- 筆記style -->
+    <style>
+        .cd{margin-left: auto;margin-right: auto;width: 1100;display: flex;flex-wrap:wrap;}
+        .cddiv{margin: 30px;border: #092846 solid 1px;width: 300px;border-radius: 8px;height: 300px;cursor: pointer;}
+        .cdtitle{height: 100%;width: 100%;}
+        .cdte{width: 100%;height: 100%;}
+        .cdtediv{margin-left: auto;margin-right: auto;width: 80%;}
+        .cdnamediv{font-size: 18px;margin-top: 10px;text-align:left;margin-left: 20px;margin-bottom: 0px;}
+        .cdhr{margin-top: 0px;}
+        .cd_inp_name{height: 100%;width: 100%;border-width: 0px;font-size: 20px;}
+        .modal-title{height: 100%;width: 100%;}
+        .cd_inp_text{width: 100%;height: 100%;overflow-y: hidden;border-width: 0px;}
+        .modal-body{height: auto;width: 100%;margin-left: auto;margin-right: auto;}
+        .cd_add_add{color: #065fd4;font-size: 60px;text-align: center;margin-top: 25%;}
+        .cd_add_text{text-align: center;font-size: 15px;color: #065fd4;}
+    </style>
+
+    <!-- 加課style -->
+    <style>
+        .add_inp_text{width: 100%;height: 100%;overflow-y: hidden;margin-top: 10px;border-radius: 5px;}
+        .modal-title{font-size: 17px;}
+    </style>
+</head>
+<body id="body">
+
+<!-- 上方工具欄 -->
+<div class="hdiv flex">
+    <div class="flexitem himg"><img src="圖片/image-removebg-preview.png"></div>
+    <div class="flexitem htext"><div class="center">林小資優通-教師版</div></div>
+    <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="電子聯絡簿but"><div class="center">聯絡簿管理</div></div>
+    <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="雲端筆記but"><div class="center">聯絡簿批改</div></div>
+    <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="班幣存摺but"><div class="center">班幣存摺</div></div>
+    <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="請假/加課but"><div class="center">加課管理</div></div>
+    <div class="flexitem login">
+        <p class="center logintext" id='name'>請先登入</p>
+        <hr width="1" class="xhr">
+        <img class="goldimg" src="圖片/coin.png"></img>
+        <p id="gold" class="center logintext">--</p>
+        <img src="圖片/登入.png" onclick="Login()" class="loginimg">
+    </div>
+</div>
+
+
+<!-- 主介面框框 -->
+<div class="bodydiv">
+
+    <!-- 聯絡簿 -->
+    <div class="bookdiv" id="電子聯絡簿">
+        <div class="bookmemus flex">
+            <div class="flexitem bookmemu booktdiv" id="bookbut1"><p class="bookt center">上一週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut2" onclick="按鈕(寫入_聯絡簿)"  ><p class="bookt center">儲存</p></div>
+            <div class="flexitem bookmemu booktdiv" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut3" onclick="按鈕(updata_book)"><p class="bookt center">更新</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut4"><p class="bookt center">下一週</p></div>
+        </div>
+        <table class="booktable">
+            <tr class="book_name">
+                <td id="1-1" class="booktd" colspan="2">test</td>
+                <td id="1-2" class="booktd" colspan="2"></td>
+                <td id="1-3" class="booktd" colspan="2"></td>
+                <td id="1-4" class="booktd" colspan="2"></td>
+                <td id="1-5" class="booktd" colspan="2"></td>
+            </tr>
+            <tr>
+                <td class="bookst">
+                    準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-1-star-1" onclick="start(this)">
+                    班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-1-star-2" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-1-star-3" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-1-star-4" onclick="start(this)">
+                    作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-1-star-5" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-1-star-6" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-1-star-7" onclick="start(this)">
+                </td>
+                <td class="booktd"><textarea id="2-1"></textarea></td>
+                <td class="bookst">
+                    準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-1" onclick="start(this)">
+                    班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-2" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-2-star-3" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-2-star-4" onclick="start(this)">
+                    作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-5" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-2-star-6" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-2-star-7" onclick="start(this)">
+                </td>
+                <td class="booktd"><textarea id="2-2"></textarea></td>
+                <td class="bookst">
+                    準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-1" onclick="start(this)">
+                    班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-2" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-3-star-3" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-3-star-4" onclick="start(this)">
+                    作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-5" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-3-star-6" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-3-star-7" onclick="start(this)">
+                </td>
+                <td class="booktd"><textarea id="2-3"></textarea></td>
+                <td class="bookst">
+                    準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-1" onclick="start(this)">
+                    班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-2" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-4-star-3" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-4-star-4" onclick="start(this)">
+                    作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-5" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-4-star-6" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-4-star-7" onclick="start(this)">
+                </td>
+                <td class="booktd"><textarea id="2-4"></textarea></td>
+                <td class="bookst">
+                    準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-1" onclick="start(this)">
+                    班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-2" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-5-star-3" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-5-star-4" onclick="start(this)">
+                    作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-5" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-5-star-7" onclick="start(this)">
+                                    <br><img src="圖片/星-白.jpg" id="2-5-star-6" onclick="start(this)">
+                </td>
+                <td class="booktd"><textarea id="2-5"></textarea></td>
+            </tr>
+            <tr>
+                <td id="1-5" class="booktd" colspan="2">
+                    <div class="flex">
+                        <p class="TeMane flexitem">授課教師簽名</p>
+                        <div class="TeManes"  id="3-1-div"><small>教師</small> <span id="3-1-name"></span></div>
+                    </div>
+                </td>
+                <td id="1-5" class="booktd" colspan="2">
+                    <div class="flex">
+                        <p class="TeMane flexitem">授課教師簽名</p>
+                        <div class="TeManes"  id="3-2-div"><small>教師</small> <span id="3-2-name"></span></div>
+                    </div>
+                </td>
+                <td id="1-5" class="booktd" colspan="2">
+                    <div class="flex">
+                        <p class="TeMane flexitem">授課教師簽名</p>
+                        <div class="TeManes" id="3-3-div"><small>教師</small> <span id="3-3-name"></span></div>
+                    </div>
+                </td>
+                <td id="1-5" class="booktd" colspan="2">
+                    <div class="flex">
+                        <p class="TeMane flexitem">授課教師簽名</p>
+                        <div class="TeManes"  id="3-4-div"><small>教師</small> <span id="3-4-name"></span></div>
+                    </div>
+                </td>
+                <td class="booktd" colspan="2">
+                    <div class="flex">
+                        <p class="TeMane flexitem">授課教師簽名</p>
+                        <div class="TeManes"  id="3-5-div"><small>教師</small> <span id="3-5-name"></span></div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td id="1-1" class="booktd" colspan="2"></td>
+                <td id="1-2" class="booktd" colspan="2"></td>
+                <td id="1-3" class="booktd" colspan="2"></td>
+                <td id="1-4" class="booktd" colspan="2"></td>
+                <td id="1-5" class="booktd" colspan="2"></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- 筆記 -->
+    <div class="bookdiv" id="雲端筆記">
+        <div class="bookmemus flex">
+            <div class="flexitem bookmemu booktdiv" id="bookbut1"><p class="bookt center">上一週</p></div>
+            <div class="flexitem bookmemu booktdiv" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut3" onclick="按鈕(updata_book)"><p class="bookt center">更新</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut4"><p class="bookt center">下一週</p></div>
+        </div>
+
+        <div class="cd">
+
+            <!-- 筆記新增 -->
+            <div class='cddiv' onclick="$('#mo02-筆記新增').modal('show');">
+                <div class="cd_add_add">+</div>
+                <p class="cd_add_text">新增筆記</p>
+            </div>
+
+            <!-- 1號筆記 -->
+            <div class='cddiv' id="cd_1" style="display: none;"> 
+                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_1">#loding</div>　<div class="flex-grow-1" id="cd_name_1">loding</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cdhr">
+                <div onclick="cd_ed(1)" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_1">空白筆記</p>
+                </div>
+            </div>
+
+            <!-- 2號筆記 -->
+            <div class='cddiv' id="cd_2" style="display: none;"> 
+                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_2">#loding</div>　<div class="flex-grow-1" id="cd_name_2">loding</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cdhr">
+                <div onclick="cd_ed(2)" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_2">空白筆記</p>
+                </div>
+            </div>
+
+            <!-- 3號筆記 -->
+            <div class='cddiv' id="cd_3" style="display: none;"> 
+                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_3">#loding</div>　<div class="flex-grow-1" id="cd_name_3">loding</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cdhr">
+                <div onclick="cd_ed(3)" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_3">空白筆記</p>
+                </div>
+            </div>
+
+            <!-- 4號筆記 -->
+            <div class='cddiv' id="cd_4" style="display: none;"> 
+                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_4">#loding</div>　<div class="flex-grow-1" id="cd_name_4">loding</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cdhr">
+                <div onclick="cd_ed(4)" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_4">空白筆記</p>
+                </div>
+            </div>
+
+            <!-- 5號筆記 -->
+            <div class='cddiv' id="cd_5" style="display: none;"> 
+                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_5">#loding</div>　<div class="flex-grow-1" id="cd_name_5">loding</div>
+                    <div>
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">編輯</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">刪除</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="cdhr">
+                <div onclick="cd_ed(5)" style="width:100%;height:75%;">
+                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_5">空白筆記</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 班幣存摺 -->
+    <div class="bookdiv" id="班幣存摺"></div>
+
+    <!-- 請假/加課  -->
+    <div class="bookdiv" id="請假/加課">
+        <div class="cd">
+            <div class='cddiv' onclick="$('#mo03-加課新增').modal('show');">
+                <div class="cd_add_add">+</div>
+                <p class="cd_add_text">加課新增</p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!-- 設置 -->
+<script>
+    // 連線firebase
+    var firebaseConfig = {
+        apiKey: "AIzaSyBmv5-WRZerKSW4irXeZHTv1XRgKhJGX3A",
+        authDomain: "lkge-web.firebaseapp.com",
+        projectId: "lkge-web",
+        storageBucket: "lkge-web.appspot.com",
+        messagingSenderId: "218155008667",
+        appId: "1:218155008667:web:f6780622aab1eef9307c3e",
+        measurementId: "G-ENCNFFQB8C"
+    };
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+    //設置變數
+    var return1
+    var uid //使用者id
+    var username //使用者名稱
+    var 目錄 = {} //快取目錄資料
+    var userarr = {} //使用者總資料
+    var week = 1 //周次
+    var b聯絡簿 = {}
+    var 分頁 = ["雲端筆記","電子聯絡簿","班幣存摺","請假/加課"]
+    var if_bookbut = false
+
+    //取得基本資料
+    var ref = db.collection('目錄');
+    ref.get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            目錄[doc.id] = doc.data()
+        });
+    });
+</script>
+
+<!-- 小函式 -->
+<script>
+    function 翻頁(but){
+        var butname=but.id.replace("but","");
+        for (let i = 0; i < 分頁.length; i++) {
+            const element = 分頁[i];
+            if (element!=butname) {
+                document.getElementById(element).style = 'display: none;'
+            }
+        }
+        document.getElementById(butname).style = 'display: block;'
+    };
+
+    function 按鈕(pa) {
+        if (username != undefined) {
+        if (if_bookbut) {
+            for (let i = 1; i < 5; i++) {
+                document.getElementById('bookbut'+i).style.cursor = 'wait'
+            }
+            document.getElementById('body').style.cursor = 'wait'
+            pa()
+            if_bookbut = false
+            setTimeout(function(){
+                if_bookbut = true
+                for (let i = 1; i < 5; i++) {
+                    document.getElementById('bookbut'+i).style.cursor = 'pointer'
+                document.getElementById('body').style.cursor = 'auto'
+            }
+            }, 2000);
+        }   
+        }
+    }
+</script>
+
+
+<!-- 龐大的主程式 -->
+<script>
+    //寫入聯絡簿
+    function 寫入_聯絡簿(){
+        function dgs (x,y){
+            return document.getElementById('2-'+x+'-star-'+y).src=='https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg'
+        }
+        if (username!=undefined){
+        for (let i = 1; i < 6; i++) {
+            var 輸入框 = document.getElementById('2-'+String(i))
+            let t輸入id = 輸入框.id.split('-')[1];
+            let t輸出資料 = {
+                內容:輸入框.value,
+                準時:[dgs(i,1)],
+                班規:[dgs(i,2),dgs(i,3),dgs(i,4)],
+                作業:[dgs(i,5),dgs(i,6),dgs(i,7)]
+
+            }
+            setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')   
+        }
+        }
+    };
+
+    //點擊星星
+    function start(t){
+        var star_b = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E9%BB%91.jpg'  //黑
+        var star_y = 'https://dong-chen-1031.github.io/LKGE_WEEB/%E5%9C%96%E7%89%87/%E6%98%9F-%E7%99%BD.jpg'  //白
+        console.log(t.src)
+        if (username!=undefined){
+            if (t.src == star_y){
+                t.src = star_b
+            }else if(t.src == star_b){
+                t.src = star_y
+            }
+        }
+    };
+
+    //登入
+    function Login(){
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+            var user = result.user;
+            uid = user.uid;
+            console.log(uid);
+            username = 目錄['學生'][uid]; 
+            console.log(username);
+            document.getElementById('name').innerText = username;
+            console.log('登入成功，登入訊息：')
+            console.log(result)
+            updata_book()
+            setTimeout(() => {
+                updata_cd()
+                if_bookbut = true
+                for (let i = 1; i < 5; i++) {
+                    document.getElementById('bookbut'+i).style.cursor = 'pointer'
+                }
+            }, 3000);
+        }).catch((error) => {
+            console.log('登入時發生不明錯誤，導致登入失敗，請重新載入後再試。錯誤訊息：');
+            console.log(error)
+            alert('登入時發生不明錯誤，導致登入失敗，請重新載入後再試。')
+        })
+    }
+
+    //功能
+    function setdb(t輸入資料,coll,doc){ //寫入資料
+        let db路徑 = db.collection(coll).doc(doc);
+        db路徑.set(t輸入資料,{merge:true}).then(() => {
+            console.log('set data successful');
+        });
+    }
+
+    //更新資料
+    function updata_book(){
+        console.log('正在更新')
+        userarr = {}
+        db.collection(username).get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                userarr[doc.id] = doc.data();
+            });
+        });
+        //console.log('取得資料完畢：')
+        console.log(userarr)
+        setTimeout(function(){
+            //console.log('正在輸出資料')
+            var star_b = '圖片/星-黑.jpg' 
+            var star_y = '圖片/星-白.jpg' 
+            document.getElementById('gold').innerText = userarr['班幣']['班幣']
+            document.getElementById('week').innerText = week
+            for (var ud_for_堂次 = 1; ud_for_堂次 < 6; ud_for_堂次++) {
+                var user2 = userarr['第'+String(week)+'周第'+String(ud_for_堂次)+'堂']
+                //console.log('正在輸出第'+ud_for_堂次+'堂的資料：')
+                //console.log(user2)
+                b聯絡簿['第'+String(week)+'周第'+String(ud_for_堂次)+'堂'] = user2
+                document.getElementById('1-'+String(ud_for_堂次)).innerText = user2['名稱']
+                document.getElementById('2-'+String(ud_for_堂次)).value = user2['內容']
+                if(user2['教師簽章'] != null){
+                    document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'block';
+                    document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = user2['教師簽章'];
+                }else{
+                    document.getElementById('3-'+String(ud_for_堂次)+'-div').style.display = 'none';
+                    document.getElementById('3-'+String(ud_for_堂次)+'-name').innerText = '';
+                }
+                if (user2['準時'][0]){
+                    document.getElementById('2-'+String(ud_for_堂次)+'-star-1').src = star_b ;
+                }else{
+                    document.getElementById('2-'+String(ud_for_堂次)+'-star-1').src = star_y;
+                };
+                for (var t = 2; t < 5; t++) {
+                    let if_star = user2['班規'][t-2];
+                    if (if_star){
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_b;
+                    }else{
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_y;
+                    };
+                };
+                for (var t = 5; t < 8; t++) {
+                    let if_star = user2['作業'][t-5];
+                    if (if_star){
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_b ;
+                    }else{
+                        document.getElementById('2-'+String(ud_for_堂次)+'-star-'+String(t)).src = star_y;
+                    };
+                };
+            }
+            console.log('更新完成')
+        },2000)
+    }
+
+    //更新筆記
+    function updata_cd(){
+        console.log('開始更新筆記')
+        for (let i = 1; i < 6 ;i++) {
+            if (userarr.hasOwnProperty('第'+week+'周筆記'+i)) {
+                console.log('找到'+'第'+week+'周筆記'+i)
+                var user2 = userarr['第'+week+'周筆記'+i]
+                console.log(user2)
+                document.getElementById('cd_'+i).style.display = 'block'
+                document.getElementById('cd_tag_'+i).innerText =  '#'+user2['標籤']
+                document.getElementById('cd_name_'+i).innerText =  user2['名稱']
+                document.getElementById('cd_text_'+i).style.color = '#000000'
+                document.getElementById('cd_text_'+i).style.fontSize = '20px'
+                document.getElementById('cd_text_'+i).innerText =  user2['內容'].substr(0,100)
+            }
+        }
+        console.log('筆記更新完成')
+    }
+
+    //編輯筆記
+    function cd_ed(n) {
+        var user2 = userarr['第'+week+'周筆記'+n]
+        document.getElementById('cd_ed_tag').innerText = user2['標籤']
+        document.getElementById('cd_ed_name').value = user2['名稱']
+        document.getElementById('cd_ed_text').value = user2['內容']
+        eval("document.getElementById('save_cd_but').onclick = function(event) { cd_save("+n+") };")
+        $('#mo01-筆記顯示').modal('show');
+    }
+
+    //儲存筆記
+    function cd_save(n) {
+        alert('儲存第'+week+'周筆記'+n)
+        let t輸出資料 = {
+                內容:document.getElementById('cd_ed_text').value,
+                名稱:document.getElementById('cd_ed_name').value,
+                標籤:document.getElementById('cd_ed_tag').innerText
+        }
+        setdb(t輸出資料,username,'第'+week+'周筆記'+n)   
+    }
+</script>
+
+<!-- bootstrap js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+<!-- Modal -->
+<div name='modal'>
+
+<!-- mo01-筆記顯示 -->
+<div class="modal fade" id="mo01-筆記顯示" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="input-group mb-3">
+            <button class="btn btn-outline-secondary" type="button" id="cd_ed_tag">loding</button>
+            <input type="text" class="form-control" placeholder="筆記名稱" value="loding" id="cd_ed_name">
+        </div>
+      </div>
+      <div class="modal-body">
+        <textarea name="textarea" class="cd_inp_text" oninput='this.style.height = this.scrollHeight + "px";' placeholder="空白筆記" id="cd_ed_text"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="save_cd_but">儲存</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- mo02-筆記新增 -->
+<div class="modal fade" id="mo02-筆記新增" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="exampleModalLongTitle">筆記新增</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">筆記標籤</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">自拍電影</a>
+                            <a class="dropdown-item" href="#">Minecraft</a>
+                            <a class="dropdown-item" href="#">網頁設計</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">詩婷老師</a>
+                            <a class="dropdown-item" href="#">貞伊老師</a>
+                            <a class="dropdown-item" href="#">傅蓉老師</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">其他筆記</a>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" placeholder="筆記名稱">
+                </div>
+                <textarea name="textarea" class="cd_inp_text" oninput='this.style.height = this.scrollHeight + "px";' placeholder="筆記內容" ></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">儲存</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- mo03-加課新增 -->
+<div class="modal fade" id="mo03-加課新增" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="exampleModalLongTitle">加課新增</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                </button>
+            </div>
+            <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="from-group">
+                            <label for="date">日期：</label>
+                            <input type="date" name="data" id="">
+                        </div>
+                        <div class="input-group-prepend">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" 
+                            aria-haspopup="true" aria-expanded="false" style="margin-left: 20px;border-radius: 5px;height: 30px;">第幾堂</button>
+
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">早修</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">第一節</a>
+                                <a class="dropdown-item" href="#">第二節</a>
+                                <a class="dropdown-item" href="#">第三節</a>
+                                <a class="dropdown-item" href="#">第四節</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">午休</a>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">第五節</a>
+                                <a class="dropdown-item" href="#">第六節</a>
+                                <a class="dropdown-item" href="#">第七節</a>
+                            </div>
+                        </div>
+                    </div>
+                <textarea name="wtext" class="add_inp_text" oninput='this.style.height = this.scrollHeight + "px";' placeholder="加課原因"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">送出</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+</body>
+</html>
