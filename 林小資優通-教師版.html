@@ -60,19 +60,8 @@
 
     <!-- 筆記style -->
     <style>
-        .cd{margin-left: auto;margin-right: auto;width: 1100;display: flex;flex-wrap:wrap;}
-        .cddiv{margin: 30px;border: #092846 solid 1px;width: 300px;border-radius: 8px;height: 300px;cursor: pointer;}
-        .cdtitle{height: 100%;width: 100%;}
-        .cdte{width: 100%;height: 100%;}
-        .cdtediv{margin-left: auto;margin-right: auto;width: 80%;}
-        .cdnamediv{font-size: 18px;margin-top: 10px;text-align:left;margin-left: 20px;margin-bottom: 0px;}
-        .cdhr{margin-top: 0px;}
-        .cd_inp_name{height: 100%;width: 100%;border-width: 0px;font-size: 20px;}
-        .modal-title{height: 100%;width: 100%;}
-        .cd_inp_text{width: 100%;height: 100%;overflow-y: hidden;border-width: 0px;}
-        .modal-body{height: auto;width: 100%;margin-left: auto;margin-right: auto;}
-        .cd_add_add{color: #065fd4;font-size: 60px;text-align: center;margin-top: 25%;}
-        .cd_add_text{text-align: center;font-size: 15px;color: #065fd4;}
+        .cd_name{margin: 10px;height: 70px;width: 200px;font-size: 30px;text-align: center;}
+        .cd{overflow:scroll;height: 500px;width: 250px;}
     </style>
 
     <!-- 加課style -->
@@ -87,7 +76,7 @@
 <div class="hdiv flex">
     <div class="flexitem himg"><img src="圖片/image-removebg-preview.png"></div>
     <div class="flexitem htext"><div class="center">林小資優通-教師版</div></div>
-    <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="電子聯絡簿but"><div class="center">聯絡簿管理</div></div>
+    <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="電子聯絡簿but"><div class="center">課程管理</div></div>
     <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="雲端筆記but"><div class="center">聯絡簿批改</div></div>
     <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="班幣存摺but"><div class="center">班幣存摺</div></div>
     <div class="flexitem huse" style="cursor: pointer;" onclick="翻頁(this)" id="請假/加課but"><div class="center">加課管理</div></div>
@@ -104,7 +93,7 @@
 <!-- 主介面框框 -->
 <div class="bodydiv">
 
-    <!-- 聯絡簿 -->
+    <!-- 課程管理 -->
     <div class="bookdiv" id="電子聯絡簿">
         <div class="bookmemus flex">
             <div class="flexitem bookmemu booktdiv" id="bookbut1"><p class="bookt center">上一週</p></div>
@@ -215,7 +204,7 @@
         </table>
     </div>
 
-    <!-- 筆記 -->
+    <!-- 聯絡簿管理 -->
     <div class="bookdiv" id="雲端筆記">
         <div class="bookmemus flex">
             <div class="flexitem bookmemu booktdiv" id="bookbut1"><p class="bookt center">上一週</p></div>
@@ -223,120 +212,20 @@
             <div class="flexitem bookmemu booktdiv" id="bookbut3" onclick="按鈕(updata_book)"><p class="bookt center">更新</p></div>
             <div class="flexitem bookmemu booktdiv" id="bookbut4"><p class="bookt center">下一週</p></div>
         </div>
-
         <div class="cd">
-
-            <!-- 筆記新增 -->
-            <div class='cddiv' onclick="$('#mo02-筆記新增').modal('show');">
-                <div class="cd_add_add">+</div>
-                <p class="cd_add_text">新增筆記</p>
-            </div>
-
-            <!-- 1號筆記 -->
-            <div class='cddiv' id="cd_1" style="display: none;"> 
-                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_1">#loding</div>　<div class="flex-grow-1" id="cd_name_1">loding</div>
-                    <div>
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">編輯</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">刪除</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="cdhr">
-                <div onclick="cd_ed(1)" style="width:100%;height:75%;">
-                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_1">空白筆記</p>
-                </div>
-            </div>
-
-            <!-- 2號筆記 -->
-            <div class='cddiv' id="cd_2" style="display: none;"> 
-                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_2">#loding</div>　<div class="flex-grow-1" id="cd_name_2">loding</div>
-                    <div>
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">編輯</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">刪除</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="cdhr">
-                <div onclick="cd_ed(2)" style="width:100%;height:75%;">
-                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_2">空白筆記</p>
-                </div>
-            </div>
-
-            <!-- 3號筆記 -->
-            <div class='cddiv' id="cd_3" style="display: none;"> 
-                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_3">#loding</div>　<div class="flex-grow-1" id="cd_name_3">loding</div>
-                    <div>
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">編輯</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">刪除</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="cdhr">
-                <div onclick="cd_ed(3)" style="width:100%;height:75%;">
-                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_3">空白筆記</p>
-                </div>
-            </div>
-
-            <!-- 4號筆記 -->
-            <div class='cddiv' id="cd_4" style="display: none;"> 
-                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_4">#loding</div>　<div class="flex-grow-1" id="cd_name_4">loding</div>
-                    <div>
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">編輯</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">刪除</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="cdhr">
-                <div onclick="cd_ed(4)" style="width:100%;height:75%;">
-                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_4">空白筆記</p>
-                </div>
-            </div>
-
-            <!-- 5號筆記 -->
-            <div class='cddiv' id="cd_5" style="display: none;"> 
-                <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_5">#loding</div>　<div class="flex-grow-1" id="cd_name_5">loding</div>
-                    <div>
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
-                            aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">編輯</a>
-                                <div role="separator" class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">刪除</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <hr class="cdhr">
-                <div onclick="cd_ed(5)" style="width:100%;height:75%;">
-                    <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_5">空白筆記</p>
-                </div>
-            </div>
-
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
+            <div class="cd_name">123</div>
         </div>
     </div>
 
