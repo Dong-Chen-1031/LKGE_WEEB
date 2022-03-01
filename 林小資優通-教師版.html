@@ -54,16 +54,29 @@
         .bookmemu{margin-left: 10px;margin-right: 10px;}
         .TeMane{font-size: 2px;margin-bottom: 20px;}
         .htext{width: 22%; height: auto;font-size: 10px;margin: 5px;
-            font-size: 30px;color: #f5f5f5}
+            font-size: 25px;color: #f5f5f5}
         .TeManes{margin-top: 10px;margin-left: 15px;font-size: 20px;margin-bottom: 5px;border: 1px red solid;color: red;display: none;}
     </style>
 
     <!-- 筆記style -->
     <style>
+        .cd_s{margin-left: auto;margin-right: auto;display: flex;flex-wrap:wrap;width: 630px;}
         .cd_name{margin: 10px;height: 40px;width: 150px;font-size: 25px;text-align: center;}
         .cd{overflow:scroll;height: 500px;width: 200px;}
         .cd_meun{width: 110px;margin-left: 80px;margin-bottom: 4px;}
         .cd_name_meun{margin-left: 10px;margin-right: 10px;}
+        .cddiv{margin: 5px;border: #092846 solid 1px;width: 200px;border-radius: 8px;height: 200px;cursor: pointer;}
+        .cdtitle{height: 100%;width: 100%;}
+        .cdte{width: 100%;height: 100%;}
+        .cdtediv{margin-left: auto;margin-right: auto;width: 80%;}
+        .cdnamediv{font-size: 18px;margin-top: 10px;text-align:left;margin-left: 20px;margin-bottom: 0px;}
+        .cdhr{margin-top: 0px;}
+        .cd_inp_name{height: 100%;width: 100%;border-width: 0px;font-size: 20px;}
+        .modal-title{height: 100%;width: 100%;}
+        .cd_inp_text{width: 100%;height: 100%;overflow-y: hidden;border-width: 0px;}
+        .modal-body{height: auto;width: 100%;margin-left: auto;margin-right: auto;}
+        .cd_add_add{color: #065fd4;font-size: 60px;text-align: center;margin-top: 25%;}
+        .cd_add_text{text-align: center;font-size: 15px;color: #065fd4;}
     </style>
 
     <!-- 加課style -->
@@ -210,17 +223,20 @@
     <div class="bookdiv" id="雲端筆記">
         <div class="bookmemus flex">
             <div class="flexitem bookmemu booktdiv" id="bookbut1"><p class="bookt center">上一週</p></div>
+            <div class="flexitem bookmemu booktdiv" id="bookbut2" onclick="按鈕(寫入_聯絡簿)"  ><p class="bookt center">儲存</p></div>
             <div class="flexitem bookmemu booktdiv" style="cursor: default;"><p class="bookt center">第<span id="week">　</span>週</p></div>
             <div class="flexitem bookmemu booktdiv" id="bookbut3" onclick="按鈕(updata_book)"><p class="bookt center">更新</p></div>
             <div class="flexitem bookmemu booktdiv" id="bookbut4"><p class="bookt center">下一週</p></div>
         </div>
 
         <div class="cd_fl flex">
+
+            <!-- 左方選單 -->
             <div class="cd_name_meun">
                 <select class="form-select cd_meun" aria-label="Default select example">
                     <option value="1" selected style="color: #198754;">已繳交</option>
                     <option value="2" style="color: #dc3545;">未繳交</option>
-                    <option value="3" style="color: #cccc18;">遲交</option>
+                    <option value="3" style="color: #bdb76b">遲交</option>
                 </select>
                 <select class="form-select cd" size="3" aria-label="size 3 select example">u
                     <option value="1" class="cd_name" style="color: #198754;" selected>陳柏東</option>
@@ -229,7 +245,177 @@
                     <option value="3" class="cd_name" style="color: #dc3545;">薛宇盛</option>
                 </select>
             </div>
-            <div style="background-color: #000000;width: 900px;height: 300pxpx;"></div>
+
+           <!-- 右方聯絡簿 -->
+            <div style="width: 900px;display: none;">
+
+                <!-- 聯絡簿 -->
+                <table class="booktable">
+                    <tr class="book_name">
+                        <td id="1-1" class="booktd" colspan="2">test</td>
+                        <td id="1-2" class="booktd" colspan="2"></td>
+                        <td id="1-3" class="booktd" colspan="2"></td>
+                        <td id="1-4" class="booktd" colspan="2"></td>
+                        <td id="1-5" class="booktd" colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td class="bookst">
+                            準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-1-star-1" onclick="start(this)">
+                            班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-1-star-2" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-1-star-3" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-1-star-4" onclick="start(this)">
+                            作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-1-star-5" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-1-star-6" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-1-star-7" onclick="start(this)">
+                        </td>
+                        <td class="booktd"><textarea id="2-1"></textarea></td>
+                        <td class="bookst">
+                            準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-1" onclick="start(this)">
+                            班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-2" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-2-star-3" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-2-star-4" onclick="start(this)">
+                            作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-2-star-5" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-2-star-6" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-2-star-7" onclick="start(this)">
+                        </td>
+                        <td class="booktd"><textarea id="2-2"></textarea></td>
+                        <td class="bookst">
+                            準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-1" onclick="start(this)">
+                            班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-2" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-3-star-3" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-3-star-4" onclick="start(this)">
+                            作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-3-star-5" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-3-star-6" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-3-star-7" onclick="start(this)">
+                        </td>
+                        <td class="booktd"><textarea id="2-3"></textarea></td>
+                        <td class="bookst">
+                            準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-1" onclick="start(this)">
+                            班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-2" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-4-star-3" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-4-star-4" onclick="start(this)">
+                            作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-4-star-5" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-4-star-6" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-4-star-7" onclick="start(this)">
+                        </td>
+                        <td class="booktd"><textarea id="2-4"></textarea></td>
+                        <td class="bookst">
+                            準<br>時<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-1" onclick="start(this)">
+                            班<br>規<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-2" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-5-star-3" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-5-star-4" onclick="start(this)">
+                            作<br>業<br>：<br><img src="圖片/星-白.jpg" id="2-5-star-5" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-5-star-7" onclick="start(this)">
+                                            <br><img src="圖片/星-白.jpg" id="2-5-star-6" onclick="start(this)">
+                        </td>
+                        <td class="booktd"><textarea id="2-5"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td id="1-5" class="booktd" colspan="2">
+                            <div class="flex">
+                                <p class="TeMane flexitem">授課教師簽名</p>
+                                <div class="TeManes"  id="3-1-div"><small>教師</small> <span id="3-1-name"></span></div>
+                            </div>
+                        </td>
+                        <td id="1-5" class="booktd" colspan="2">
+                            <div class="flex">
+                                <p class="TeMane flexitem">授課教師簽名</p>
+                                <div class="TeManes"  id="3-2-div"><small>教師</small> <span id="3-2-name"></span></div>
+                            </div>
+                        </td>
+                        <td id="1-5" class="booktd" colspan="2">
+                            <div class="flex">
+                                <p class="TeMane flexitem">授課教師簽名</p>
+                                <div class="TeManes" id="3-3-div"><small>教師</small> <span id="3-3-name"></span></div>
+                            </div>
+                        </td>
+                        <td id="1-5" class="booktd" colspan="2">
+                            <div class="flex">
+                                <p class="TeMane flexitem">授課教師簽名</p>
+                                <div class="TeManes"  id="3-4-div"><small>教師</small> <span id="3-4-name"></span></div>
+                            </div>
+                        </td>
+                        <td class="booktd" colspan="2">
+                            <div class="flex">
+                                <p class="TeMane flexitem">授課教師簽名</p>
+                                <div class="TeManes"  id="3-5-div"><small>教師</small> <span id="3-5-name"></span></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- 筆記 -->
+                <div class="cd_s">
+                    <!-- 1號筆記 -->
+                    <div class='cddiv' id="cd_1" style="display: block;"> 
+                        <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_1">#loding</div>　<div class="flex-grow-1" id="cd_name_1">loding</div>
+                            <div>
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                                    aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">編輯</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">刪除</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="cdhr">
+                        <div onclick="cd_ed(1)" style="width:100%;height:75%;">
+                            <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_1">空白筆記</p>
+                        </div>
+                    </div>
+        
+                    <!-- 2號筆記 -->
+                    <div class='cddiv' id="cd_2" style="display: block;"> 
+                        <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_2">#loding</div>　<div class="flex-grow-1" id="cd_name_2">loding</div>
+                            <div>
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                                    aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">編輯</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">刪除</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="cdhr">
+                        <div onclick="cd_ed(2)" style="width:100%;height:75%;">
+                            <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_2">空白筆記</p>
+                        </div>
+                    </div>
+        
+                    <!-- 3號筆記 -->
+                    <div class='cddiv' id="cd_3" style="display: block;"> 
+                        <div class="cdnamediv d-flex justify-content-start"><div style="color: #065fd4;" id="cd_tag_3">#loding</div>　<div class="flex-grow-1" id="cd_name_3">loding</div>
+                            <div>
+                                <div class="input-group-prepend">
+                                    <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" 
+                                    aria-haspopup="true" aria-expanded="false" style="margin-right: 10px;margin-bottom: 5px;height: 30px;">
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">編輯</a>
+                                        <div role="separator" class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">刪除</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="cdhr">
+                        <div onclick="cd_ed(3)" style="width:100%;height:75%;">
+                            <p class="cdtediv" style="color: #80868b;font-size: 25px;" id="cd_text_3">空白筆記</p>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+
+            <!-- loding -->
+            <div style="width: 900px;display: block;">
+                <img src="">
+            </div>
         </div>
     </div>
 
