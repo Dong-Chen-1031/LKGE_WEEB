@@ -60,8 +60,10 @@
 
     <!-- 筆記style -->
     <style>
-        .cd_name{margin: 10px;height: 70px;width: 200px;font-size: 30px;text-align: center;}
-        .cd{overflow:scroll;height: 500px;width: 250px;}
+        .cd_name{margin: 10px;height: 40px;width: 150px;font-size: 25px;text-align: center;}
+        .cd{overflow:scroll;height: 500px;width: 200px;}
+        .cd_meun{width: 110px;margin-left: 80px;margin-bottom: 4px;}
+        .cd_name_meun{margin-left: 10px;margin-right: 10px;}
     </style>
 
     <!-- 加課style -->
@@ -212,20 +214,22 @@
             <div class="flexitem bookmemu booktdiv" id="bookbut3" onclick="按鈕(updata_book)"><p class="bookt center">更新</p></div>
             <div class="flexitem bookmemu booktdiv" id="bookbut4"><p class="bookt center">下一週</p></div>
         </div>
-        <div class="cd">
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
-            <div class="cd_name">123</div>
+
+        <div class="cd_fl flex">
+            <div class="cd_name_meun">
+                <select class="form-select cd_meun" aria-label="Default select example">
+                    <option value="1" selected style="color: #198754;">已繳交</option>
+                    <option value="2" style="color: #dc3545;">未繳交</option>
+                    <option value="3" style="color: #cccc18;">遲交</option>
+                </select>
+                <select class="form-select cd" size="3" aria-label="size 3 select example">u
+                    <option value="1" class="cd_name" style="color: #198754;" selected>陳柏東</option>
+                    <option value="2" class="cd_name" style="color: #198754;">孫浩雲</option>
+                    <option value="3" class="cd_name" style="color: #198754;">蘇映竹</option>
+                    <option value="3" class="cd_name" style="color: #dc3545;">薛宇盛</option>
+                </select>
+            </div>
+            <div style="background-color: #000000;width: 900px;height: 300pxpx;"></div>
         </div>
     </div>
 
