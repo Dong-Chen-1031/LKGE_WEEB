@@ -5,8 +5,8 @@ from firebase_admin import firestore
 
 # 引用私密金鑰
 # path/to/serviceAccount.json 請用自己存放的路徑
-cred = credentials.Certificate('C:/Users/DongD/Desktop/lkge-web-firebase-adminsdk-2t4fb-a02dfe2631.json')
-
+cred = credentials.Certificate('D:/啟用工具/lkge-web-firebase-adminsdk-2t4fb-3d6bd5431a.json')
+# C:/Users/DongD/Desktop/lkge-web-firebase-adminsdk-2t4fb-a02dfe2631.json
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
 
@@ -15,18 +15,24 @@ db = firestore.client()
 
 # 建立文件 必須給定 集合名稱 文件id
 # 即使 集合一開始不存在 都可以直接使用
+path = "Dong Chen"
+collection_ref = db.collection(path)
 
-l = ['','Minecraft','自拍電影','網頁設計','詩婷老師']
+docs = collection_ref.get()
+for doc in docs:
+    print("文件標題：{}".format(doc.id))
+    print("文件內容：{}".format(doc.to_dict()))
+    print("------------------------------------------------------")
 
 # 語法
 # doc_ref = db.collection("集合名稱").document("文件id")
-for i in range(1,4,1):
-  doc = {
-    '內容':str(i)+'號筆記',
-    '名稱':'課堂筆記',
-    '提交':False,
-    '標籤':l[i]
-  }
-  doc_ref = db.collection("Dong Chen").document('第1周筆記'+str(i))
-  # doc_ref提供一個set的方法，input必須是dictionary
-  doc_ref.set(doc)
+# for i in range(1,4,1):
+#   doc = {
+#     '內容':str(i)+'號筆記',
+#     '名稱':'課堂筆記',
+#     '提交':False,
+#     '標籤':l[i]
+#   }
+#   doc_ref = db.collection("Dong Chen").document('第1周筆記'+str(i))
+#   # doc_ref提供一個set的方法，input必須是dictionary
+#   doc_ref.set(doc)

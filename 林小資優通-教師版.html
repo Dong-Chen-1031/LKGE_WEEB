@@ -236,14 +236,15 @@
             <!-- 左方選單 -->
             <div class="cd_name_meun">
                 <select class="form-select cd_meun" aria-label="Default select example">
-                    <option value="1" selected style="color: #198754;">已繳交</option>
+                    <option value="1" selected style="color: #000000;">全部</option>
+                    <option value="1"  style="color: #198754;">已繳交</option>
                     <option value="2" style="color: #dc3545;">未繳交</option>
-                    <option value="3" style="color: #bdb76b">遲交</option>
                 </select>
                 <select class="form-select cd" size="3" aria-label="size 3 select example">u
                     <option value="1" class="cd_name" style="color: #198754;" selected>陳柏東</option>
                     <option value="2" class="cd_name" style="color: #198754;">孫浩雲</option>
                     <option value="3" class="cd_name" style="color: #198754;">蘇映竹</option>
+                    <option value="3" class="cd_name" style="color: #dc3545;">楊宗諭</option>
                     <option value="3" class="cd_name" style="color: #dc3545;">薛宇盛</option>
                 </select>
             </div>
@@ -415,7 +416,7 @@
             </div>
 
             <!-- loding -->
-            <div style="width: 900px;display: block;">
+            <div style="width: 900px;display: block;text-align: center;">
                 <img src="https://dong-chen-1031.github.io/LKGE_WEEB/圖片/loading.gif" style="margin:auto;">
             </div>
         </div>
@@ -581,8 +582,8 @@
         });
     }
 
-    //更新資料
-    function updata_book(){
+    //更新學生聯絡簿
+    function updata_book(username){
         console.log('正在更新')
         userarr = {}
         db.collection(username).get().then(querySnapshot => {
@@ -638,7 +639,7 @@
         },2000)
     }
 
-    //更新筆記
+    //更新學生筆記
     function updata_cd(){
         console.log('開始更新筆記')
         for (let i = 1; i < 6 ;i++) {
@@ -677,6 +678,8 @@
         }
         setdb(t輸出資料,username,'第'+week+'周筆記'+n)   
     }
+
+    //
 </script>
 
 <!-- bootstrap js -->
