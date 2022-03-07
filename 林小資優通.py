@@ -1,4 +1,5 @@
 # 引用必要套件
+from ast import If
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -15,14 +16,21 @@ db = firestore.client()
 
 # 建立文件 必須給定 集合名稱 文件id
 # 即使 集合一開始不存在 都可以直接使用
+
+
+
 path = "Dong Chen"
 collection_ref = db.collection(path)
 
+資料 = {}
+
 docs = collection_ref.get()
 for doc in docs:
-    print("文件標題：{}".format(doc.id))
-    print("文件內容：{}".format(doc.to_dict()))
-    print("------------------------------------------------------")
+    資料[doc.id] = doc.to_dict()
+
+print(資料)
+
+
 
 # 語法
 # doc_ref = db.collection("集合名稱").document("文件id")
