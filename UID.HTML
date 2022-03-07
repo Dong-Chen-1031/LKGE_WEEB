@@ -15,34 +15,28 @@
     
     <style>
         body{height: 100%;background-color: #092846;}
-        .but{margin-top: 300px;font-size: 30px;}
-        .butdiv{text-align: center;}
+        .but{font-size: 30px;}
+        .butdiv{text-align: center;margin-top: 130px;}
+        p{font-size: 30px;color: #ffffff;}
+        hr{background-color: #ffffff;width: 700px;}
+        span{font-size: 18px;color: #ffffff;cursor: pointer;border: #ffffff 1px solid;width: 45px;}
     </style>
 </head>
 <body>
     <div class="butdiv">
-        <button type="submit" class="btn btn-primary but" onclick="$('#uid').modal('show');">註冊</button>
+        <p style="font-size: 40px;">註冊</p>
+        <hr style="width: 800px;height: 2px;">
+        <p>步驟一：取得uid</p>
+        <button type="submit" class="btn btn-primary but">顯示uid</button>
+        <p style="font-size: 23px;">您的uid是：----------------------------<span>複製</span></p>
+        <hr>
+        <p>步驟二：填寫表單</p>
+        <button type="submit" class="btn btn-primary but">前往表單</button>
+        <hr>
+        <p>步驟三：等候通知</p>
+        <p style="font-size: 23px;">送出表單後系統將為您建立帳戶，請等後通知。</p>
     </div>
     
-    <!-- Modal -->
-    <div class="modal fade" id="uid" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">註冊</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <button type="submit" class="btn btn-primary">顯示uid</button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-        </div>
-    </div>
 
     <script>
         // 連線firebase
