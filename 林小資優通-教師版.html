@@ -119,7 +119,7 @@
         </div>
         <table class="booktable">
             <tr class="book_name">
-                <td id="1-1" class="booktd" colspan="2">test</td>
+                <td id="1-1" class="booktd" colspan="2"></td>
                 <td id="1-2" class="booktd" colspan="2"></td>
                 <td id="1-3" class="booktd" colspan="2"></td>
                 <td id="1-4" class="booktd" colspan="2"></td>
@@ -238,12 +238,8 @@
                     <option value="1"  style="color: #198754;">已繳交</option>
                     <option value="2" style="color: #dc3545;">未繳交</option>
                 </select>
-                <select class="form-select cd" size="3" aria-label="size 3 select example">u
-                    <option value="1" class="cd_name" style="color: #198754;" selected>陳柏東</option>
-                    <option value="2" class="cd_name" style="color: #198754;">孫浩雲</option>
-                    <option value="3" class="cd_name" style="color: #198754;">蘇映竹</option>
-                    <option value="3" class="cd_name" style="color: #dc3545;">楊宗諭</option>
-                    <option value="3" class="cd_name" style="color: #dc3545;">薛宇盛</option>
+                <select class="form-select cd" size="3" aria-label="size 3 select example" id="cd_se">
+                    
                 </select>
             </div>
 
@@ -462,6 +458,7 @@
     var b聯絡簿 = {}
     var 分頁 = ["雲端筆記","電子聯絡簿","班幣存摺","請假/加課"]
     var if_bookbut = false
+    var 繳交 = {}
 
     //取得基本資料
     var ref = db.collection('目錄');
@@ -509,6 +506,41 @@
 
 <!-- 龐大的主程式 -->
 <script>
+
+    //載入學生聯絡簿繳交狀況
+    function 載入_繳交狀況(){
+        db.collection('聯絡簿繳交').get().then(querySnapshot => {
+            querySnapshot.forEach(doc => {
+                繳交[doc.id] = doc.data();
+                
+            });
+        });
+        setTimeout(() => {
+            繳交_本周 = 繳交['第'+week+'周']
+            for (const key in 繳交_本周) {
+                if (Object.hasOwnProperty.call(繳交_本周, key)) {
+                    const element = 繳交_本周[key];
+                    console.log(key)
+                    console.log(element)
+                    // 用 createElement 增加一個 DOM 節點
+                    var str = document.createElement('option');
+                    // 先用 JS 寫好要增加的內容
+                    str.textContent = key
+                    // 動態掛一個 class 屬性
+                    str.setAttribute('class','cd_name');
+                    str.setAttribute('value',key);
+                    if (element[0]){
+                        str.setAttribute('style','color: #198754');
+                    }else{
+                        str.setAttribute('style','color: #dc3545');
+                    }
+                    // 用 appendChild() 把上面寫好的子節點掛在既有的 h1 下面，新增的內容會依序排列在後面，不會被洗掉
+                    document.getElementById('cd_se').appendChild(str);
+                }
+            }
+        }, 2000);
+    }
+
     //寫入聯絡簿
     function 寫入_聯絡簿(){
         function dgs (x,y){
