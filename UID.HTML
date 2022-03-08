@@ -19,7 +19,7 @@
         .butdiv{text-align: center;margin-top: 130px;}
         p{font-size: 30px;color: #ffffff;}
         hr{background-color: #ffffff;width: 700px;}
-        span{font-size: 18px;color: #ffffff;cursor: pointer;width: 45px;background-color: #007bff;}
+        .co{font-size: 18px;color: #ffffff;cursor: pointer;width: 45px;background-color: #007bff;}
     </style>
 </head>
 <body>
@@ -28,7 +28,7 @@
         <hr style="width: 800px;height: 2px;">
         <p>步驟一：取得uid</p>
         <button type="submit" class="btn btn-primary but">顯示uid</button>
-        <p style="font-size: 23px;">您的uid是：----------------------------<span>複製</span></p>
+        <p style="font-size: 23px;">您的uid是：<span id="uid">----------------------------</span><span class="co" onclick="copyEvent('uid')">複製</span></p>
         <hr>
         <p>步驟二：填寫表單</p>
         <button type="submit" class="btn btn-primary but">前往表單</button>
@@ -51,6 +51,29 @@
         };
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
+
+
+        function Login(){
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+            .then((result) => {
+                var user = result.user;
+                uid = user.uid;
+                console.log(uid);
+                document.getElementById("uid").innerText = uid
+            }).catch((error) => {
+                console.log('登入時發生不明錯誤，導致登入失敗，請重新載入後再試。錯誤訊息：');
+                console.log(error)
+                alert('登入時發生不明錯誤，導致登入失敗，請重新載入後再試。')
+            })
+        }
+
+
+        function copyEvent(id){
+            var str = document.getElementById(id);
+            window.getSelection().selectAllChildren(str);
+            document.execCommand("Copy")
+        }
 
     </script>
 
