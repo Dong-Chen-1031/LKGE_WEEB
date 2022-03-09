@@ -1,5 +1,5 @@
 # 引用必要套件
-from ast import If
+
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
