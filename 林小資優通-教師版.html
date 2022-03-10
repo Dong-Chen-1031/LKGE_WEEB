@@ -238,7 +238,7 @@
                     <option value="1"  style="color: #198754;">已繳交</option>
                     <option value="2" style="color: #dc3545;">未繳交</option>
                 </select>
-                <select class="form-select cd" size="3" aria-label="size 3 select example" id="cd_se">
+                <select class="form-select cd" size="3" aria-label="size 3 select example" id="cd_se" onchange="顯示學生book(this)">
                     
                 </select>
             </div>
@@ -515,6 +515,7 @@
                 
             });
         });
+        document.getElementById('cd_se').innerHTML = ''
         setTimeout(() => {
             繳交_本周 = 繳交['第'+week+'周']
             for (const key in 繳交_本周) {
@@ -534,7 +535,6 @@
                     }else{
                         str.setAttribute('style','color: #dc3545');
                     }
-                    // 用 appendChild() 把上面寫好的子節點掛在既有的 h1 下面，新增的內容會依序排列在後面，不會被洗掉
                     document.getElementById('cd_se').appendChild(str);
                 }
             }
@@ -710,6 +710,10 @@
     }
 
     //
+    function 顯示學生book(objS){
+        var grade = objS.options[objS.selectedIndex].value;
+        alert(grade);
+    }
 </script>
 
 <!-- bootstrap js -->
