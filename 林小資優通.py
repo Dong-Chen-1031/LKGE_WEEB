@@ -34,7 +34,7 @@ db = firestore.client()
 
 
 #語法
-doc_ref = db.collection("集合名稱").document("文件id")
+#doc_ref = db.collection("集合名稱").document("文件id")
 for i in range(1,4,1):
   doc = {
     '內容':str(i)+'號筆記',
