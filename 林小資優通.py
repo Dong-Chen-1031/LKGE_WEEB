@@ -19,28 +19,29 @@ db = firestore.client()
 
 
 
-path = "Dong Chen"
-collection_ref = db.collection(path)
+# path = "Dong Chen"
+# collection_ref = db.collection(path)
 
-資料 = {}
+# 資料 = {}
 
-docs = collection_ref.get()
-for doc in docs:
-    資料[doc.id] = doc.to_dict()
+# docs = collection_ref.get()
+# for doc in docs:
+#     資料[doc.id] = doc.to_dict()
 
-print(資料)
+# print(資料)
 
 
 
-# 語法
-# doc_ref = db.collection("集合名稱").document("文件id")
-# for i in range(1,4,1):
-#   doc = {
-#     '內容':str(i)+'號筆記',
-#     '名稱':'課堂筆記',
-#     '提交':False,
-#     '標籤':l[i]
-#   }
-#   doc_ref = db.collection("Dong Chen").document('第1周筆記'+str(i))
-#   # doc_ref提供一個set的方法，input必須是dictionary
-#   doc_ref.set(doc)
+
+#語法
+doc_ref = db.collection("集合名稱").document("文件id")
+for i in range(1,4,1):
+  doc = {
+    '內容':str(i)+'號筆記',
+    '名稱':'課堂筆記',
+    '提交':False,
+    '標籤':l[i]
+  }
+  doc_ref = db.collection("Dong Chen").document('第1周筆記'+str(i))
+  # doc_ref提供一個set的方法，input必須是dictionary
+  doc_ref.set(doc)
