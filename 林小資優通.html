@@ -119,11 +119,11 @@
         </div>
         <table class="booktable">
             <tr class="book_data">
-                <td id="0-1" class="booktd" colspan="2"><input type="date" value="2022-04-01"></td>
-                <td id="0-2" class="booktd" colspan="2"><input type="date" value="2022-04-01"></td>
-                <td id="0-3" class="booktd" colspan="2"><input type="date" value="2022-04-01"></td>
-                <td id="0-4" class="booktd" colspan="2"><input type="date" value="2022-04-01"></td>
-                <td id="0-5" class="booktd" colspan="2"><input type="date" value="2022-04-01"></td>
+                <td id="0-1" class="booktd" colspan="2"><input type="date" value="2022-04-01" id="0-1-inp"></td>
+                <td id="0-2" class="booktd" colspan="2"><input type="date" value="2022-04-01" id="0-2-inp"></td>
+                <td id="0-3" class="booktd" colspan="2"><input type="date" value="2022-04-01" id="0-3-inp"></td>
+                <td id="0-4" class="booktd" colspan="2"><input type="date" value="2022-04-01" id="0-4-inp"></td>
+                <td id="0-5" class="booktd" colspan="2"><input type="date" value="2022-04-01" id="0-5-inp"></td>
             </tr>
             <tr class="book_name">
                 <td id="1-1" class="booktd" colspan="2"><input type="text" id="1-1-inp" placeholder="課程名稱"></td>
@@ -447,9 +447,9 @@
                 準時:[dgs(i,1)],
                 班規:[dgs(i,2),dgs(i,3),dgs(i,4)],
                 作業:[dgs(i,5),dgs(i,6),dgs(i,7)],
-                名稱:document.getElementById('1-'+i+'-inp').value
-
-            }
+                名稱:document.getElementById('1-'+i+'-inp').value,
+                日期:document.getElementById('0-'+i+'-inp').value
+            }   
             setdb(t輸出資料,username,'第'+week+'周第'+t輸入id+'堂')   
         }
         }
