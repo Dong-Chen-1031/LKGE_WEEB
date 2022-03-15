@@ -521,7 +521,14 @@
             }
             var star_b = '圖片/星-黑.jpg' 
             var star_y = '圖片/星-白.jpg' 
-            document.getElementById('gold').innerText = userarr['班幣']['班幣']
+            if (userarr.hasOwnProperty('班幣')) {
+                document.getElementById('gold').innerText = userarr['班幣']['班幣']   
+            }else{
+                t輸出資料 = {
+                    班幣:0
+                }
+                setdb(t輸出資料,username,'班幣')
+            }
             document.getElementById('week').innerText = week
             for (var ud_for_堂次 = 1; ud_for_堂次 < 6; ud_for_堂次++) {
                 var user2 = userarr['第'+String(week)+'周第'+String(ud_for_堂次)+'堂']
