@@ -607,6 +607,14 @@
         }
         setdb(t輸出資料,username,'第'+week+'周筆記'+n)   
     }
+
+    //繳交
+    function 交聯絡簿() {
+        let 資料 = {
+            username:[true,new Date()]
+        }
+        setdb(資料,'聯絡簿繳交','第'+week+'周')
+    }
 </script>
 
 <!-- bootstrap js -->
