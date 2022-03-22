@@ -59,6 +59,7 @@
         .TeMane{font-size: 2px;margin-bottom: 20px;}
         .htext{width: 15%; height: auto;font-size: 10px;margin: 5px;
             font-size: 30px;color: #f5f5f5}
+        .施工{width: 100%;margin-top: 100px;}
         .TeManes{margin-top: 10px;margin-left: 15px;font-size: 20px;margin-bottom: 5px;border: 1px red solid;color: red;display: none;}
     </style>
 
@@ -346,7 +347,7 @@
     </div>
 
     <!-- 班幣存摺 -->
-    <div class="bookdiv" id="班幣存摺"></div>
+    <div class="bookdiv" id="班幣存摺"><img src="https://www.iwitchbaby.com/wp-content/uploads/2013/10/20131031-31.bmp" class="施工"></div>
 
     <!-- 請假/加課  -->
     <div class="bookdiv" id="請假/加課">
@@ -413,7 +414,7 @@
     function 按鈕(pa) {
         if (username != undefined) {
         if (if_bookbut) {
-            for (let i = 1; i < 5; i++) {
+            for (let i = 2; i < 4; i++) {
                 document.getElementById('bookbut'+i).style.cursor = 'wait'
             }
             document.getElementById('body').style.cursor = 'wait'
@@ -421,7 +422,7 @@
             if_bookbut = false
             setTimeout(function(){
                 if_bookbut = true
-                for (let i = 1; i < 5; i++) {
+                for (let i = 2; i < 4; i++) {
                     document.getElementById('bookbut'+i).style.cursor = 'pointer'
                 document.getElementById('body').style.cursor = 'auto'
             }
@@ -489,7 +490,7 @@
             setTimeout(() => {
                 updata_cd()
                 if_bookbut = true
-                for (let i = 1; i < 5; i++) {
+                for (let i = 2; i < 4; i++) {
                     document.getElementById('bookbut'+i).style.cursor = 'pointer'
                 }
             }, 3000);
