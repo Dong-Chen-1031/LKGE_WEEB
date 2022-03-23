@@ -537,6 +537,7 @@
             for (var ud_for_堂次 = 1; ud_for_堂次 < 6; ud_for_堂次++) {
                 var user2 = userarr['第'+String(week)+'周第'+String(ud_for_堂次)+'堂']
                 b聯絡簿['第'+String(week)+'周第'+String(ud_for_堂次)+'堂'] = user2
+                document.getElementById('0-'+String(ud_for_堂次)+'-inp').value = user2['日期']
                 document.getElementById('1-'+String(ud_for_堂次)+'-inp').value = user2['名稱']
                 document.getElementById('2-'+String(ud_for_堂次)).value = user2['內容']
                 if(user2['教師簽章'] != null){
