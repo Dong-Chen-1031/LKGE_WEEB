@@ -570,6 +570,8 @@
                 };
             }
             console.log('更新完成')
+            document.getElementById('mo_print').innerText = '✔更新完成'
+            $('#mo4-提示視窗').modal('show');
         },2000)
     }
 
@@ -650,7 +652,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- mo02-筆記新增 -->
 <div class="modal fade" id="mo02-筆記新增" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
