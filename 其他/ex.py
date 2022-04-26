@@ -5,8 +5,8 @@ from firebase_admin import credentials
 from firebase_admin import firestore
 
 cred = credentials.Certificate('D:/啟用工具/lkge-web-firebase-adminsdk-2t4fb-3d6bd5431a.json')
-# C:/Users/DongD/Desktop/lkge-web-firebase-adminsdk-2t4fb-a02dfe2631.json
-# 初始化firebase，注意不能重複初始化
+
+
 firebase_admin.initialize_app(cred)
 
 # 初始化firestore
