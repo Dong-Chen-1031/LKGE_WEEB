@@ -14,5 +14,5 @@
     'use strict';
     if (location.href.split("/")[2]='mail.google.com') {
         console.log(location.href.split("/"));
-    }
+    };
 })();
