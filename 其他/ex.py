@@ -4,7 +4,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
 
-cred = credentials.Certificate('D:/啟用工具/lkge-web-firebase-adminsdk-2t4fb-3d6bd5431a.json')
+cred = credentials.Certificate('E:\\lkge-web.json')
 
 
 firebase_admin.initialize_app(cred)
@@ -12,7 +12,7 @@ firebase_admin.initialize_app(cred)
 # 初始化firestore
 db = firestore.client()
 
-wb = load_workbook("C:/Users/User/Downloads/LKGE_WEEB/其他/林小資優通 (回覆).xlsx")
+wb = load_workbook("C:/Users/User/dasktop/林小資優通 (回覆).xlsx")
 
 ws = wb.active
 

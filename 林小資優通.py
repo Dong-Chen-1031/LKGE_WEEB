@@ -6,7 +6,7 @@ from firebase_admin import firestore
 
 # 引用私密金鑰
 # path/to/serviceAccount.json 請用自己存放的路徑
-cred = credentials.Certificate('D:/啟用工具/lkge-web-firebase-adminsdk-2t4fb-3d6bd5431a.json')
+cred = credentials.Certificate('C:/Users/DongD/Desktop/lkge-web-firebase-adminsdk-2t4fb-fc56b022ca.json')
 # C:/Users/DongD/Desktop/lkge-web-firebase-adminsdk-2t4fb-a02dfe2631.json
 # 初始化firebase，注意不能重複初始化
 firebase_admin.initialize_app(cred)
